@@ -1,0 +1,654 @@
+
+<body>
+  <div class="container">
+<link rel="stylesheet" href="style.css">
+
+
+<h1 id="cpts-answers">CPTS Answers</h1>
+<h2 id="module-penetration-testing-process">Module: Penetration Testing Process</h2>
+<ol>
+<li>How many documents must be prepared in total for a penetration test? -&gt; 7</li>
+<li>What type of analysis can be used to predict future probabilities? -&gt; predictive</li>
+<li>How many types of evasive testing are mentioned in this section? -&gt; 3</li>
+<li>What is the name of the security standard for credit card payments that a company must adhere to? (Answer Format: acronym) -&gt; pci-dss</li>
+<li>What designation do we typically give a report when it is first delivered to a client for a chance to review and comment? (One word) -&gt; draft</li>
+</ol>
+<h2 id="module-getting-started">Module: Getting Started</h2>
+<ol>
+<li>Apply what you learned in this section to grab the banner of the above server and submit it as the answer. -&gt; SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.1</li>
+<li>Perform a Nmap scan of the target. What is the version of the service from the Nmap scan running on port 8080? -&gt; apache tomcat</li>
+<li>Perform an Nmap scan of the target and identify the non-default port that the telnet service is running on. -&gt; 2323</li>
+<li>List the SMB shares available on the target host. Connect to the available share as the bob user. Once connected, access the folder called &#39;flag&#39; and submit the contents of the flag.txt file. -&gt; dceece590f3284c3866305eb2473d099</li>
+<li>Try running some of the web enumeration techniques you learned in this section on the server above, and use the info you get to get the flag. -&gt; HTB{w3b_3num3r4710n_r3v34l5_53cr375}</li>
+<li>Try to identify the services running on the server above, and then try to search to find public exploits to exploit them. Once you do, try to get the content of the &#39;/flag.txt&#39; file. (note: the web server may take a few seconds to start -&gt; HTB{my_f1r57_h4ck}</li>
+<li>SSH into the server above with the provided credentials, and use the &#39;-p xxxxxx&#39; to specify the port shown above. Once you login, try to find a way to move to &#39;user2&#39;, to get the flag in &#39;/home/user2/flag.txt&#39;. -&gt; HTB{l473r4l_m0v3m3n7_70_4n07h3r_u53r}</li>
+<li>Once you gain access to &#39;user2&#39;, try to find a way to escalate your privileges to root, to get the flag in &#39;/root/flag.txt&#39; -&gt; HTB{pr1v1l363_35c4l4710n_2_r007}</li>
+<li>Run an nmap script scan on the target. What is the Apache version running on the server? (answer format: X.X.XX) -&gt; 2.4.18</li>
+<li>Gain a foothold on the target and submit the user.txt flag -&gt; 79c03865431abf47b90ef24b9695e148</li>
+<li>Escalate privileges and submit the root.txt flag. -&gt; de5e5d6619862a8aa5b9b212314e0cdd</li>
+<li>Spawn the target, gain a foothold and submit the contents of the user.txt flag. -&gt; 7002d65b149b0a4d19132a66feed21d8</li>
+<li>After obtaining a foothold on the target, escalate privileges to root and submit the contents of the root.txt flag -&gt; f1fba6e9f71efb2630e6e34da6387842</li>
+</ol>
+<h2 id="module-network-enumeration-with-nmap">Module: Network Enumeration with Nmap</h2>
+<ol>
+<li>Based on the last result, find out which operating system it belongs to. Submit the name of the operating system as result. -&gt; windows</li>
+<li>Find all TCP ports on your target. Submit the total number of found TCP ports as the answer. -&gt; 7</li>
+<li>Enumerate the hostname of your target and submit it as the answer. (case-sensitive) -&gt; NIX-NMAP-DEFAULT</li>
+<li>Perform a full TCP port scan on your target and create an HTML report. Submit the number of the highest port as the answer -&gt; 31337</li>
+<li>Enumerate all ports and their services. One of the services contains the flag you have to submit as the answer. -&gt; HTB{pr0F7pDv3r510nb4nn3r}</li>
+<li>Use NSE and its scripts to find the flag that one of the services contain and submit it as the answer. -&gt; HTB{873nniuc71bu6usbs1i96as6dsv26}</li>
+<li>Our client wants to know if we can identify which operating system their provided machine is running on. Submit the OS name as the answer. -&gt; Ubuntu</li>
+<li>After the configurations are transferred to the system, our client wants to know if it is possible to find out our target&#39;s DNS server version. Submit the DNS server version of the target as the answer -&gt; HTB{GoTtgUnyze9Psw4vGjcuMpHRp}</li>
+<li>Now our client wants to know if it is possible to find out the version of the running services. Identify the version of service our client was talking about and submit the flag as the answer. -&gt; HTB{kjnsdf2n982n1827eh76238s98di1w6}</li>
+</ol>
+<h2 id="module-footprinting">Module: Footprinting</h2>
+<ol>
+<li>Which version of the FTP server is running on the target system? Submit the entire banner as the answer. -&gt; InFreight FTP v1.1</li>
+<li>Enumerate the FTP server and find the flag.txt file. Submit the contents of it as the answer. -&gt; HTB{b7skjr4c76zhsds7fzhd4k3ujg7nhdjre}</li>
+<li>What version of the SMB server is running on the target system? Submit the entire banner as the answer. -&gt; Samba smbd 4.6.2</li>
+<li>What is the name of the accessible share on the target? -&gt; sambashare</li>
+<li>Connect to the discovered share and find the flag.txt file. Submit the contents as the answer. -&gt; HTB{o873nz4xdo873n4zo873zn4fksuhldsf}</li>
+<li>Find out which domain the server belongs to. -&gt; devops</li>
+<li>Find additional information about the specific share we found previously and submit the customized version of that specific share as the answer. -&gt; InFreight SMB v3.1</li>
+<li>What is the full system path of that specific share? -&gt; /home/sambauser</li>
+<li>Enumerate the NFS service and submit the contents of the flag.txt in the &quot;nfs&quot; share as the answer. -&gt; HTB{hjglmvtkjhlkfuhgi734zthrie7rjmdze}</li>
+<li>Enumerate the NFS service and submit the contents of the flag.txt in the &quot;nfsshare&quot; share as the answer. -&gt; HTB{8o7435zhtuih7fztdrzuhdhkfjcn7ghi4357ndcthzuc7rtfghu34}</li>
+<li>Interact with the target DNS using its IP address and enumerate the FQDN of it for the &quot;inlanefreight.htb&quot; domain. -&gt; ns.inlanefreight.htb</li>
+<li>Identify if its possible to perform a zone transfer and submit the TXT record as the answer. (Format: HTB{...)) -&gt; HTB{DN5_z0N3_7r4N5F3r_iskdufhcnlu34}</li>
+<li>What is the IPv4 address of the hostname DC1? -&gt; 10.129.34.16</li>
+<li>What is the FQDN of the host where the last octet ends with &quot;x.x.x.203&quot;? -&gt; win2k.dev.inlanefreight.htb</li>
+<li>Enumerate the SMTP service and submit the banner, including its version as the answer. -&gt; InFreight ESMTP v2.11</li>
+<li>Enumerate the SMTP service even further and find the username that exists on the system. Submit it as the answer. -&gt; robin</li>
+<li>Figure out the exact organization name from the IMAP/POP3 service and submit it as the answer. -&gt; InLaneFreight Ltd</li>
+<li>What is the FQDN that the IMAP and POP3 servers are assigned to? -&gt; dev.inlanefreight.htb</li>
+<li>Enumerate the IMAP service and submit the flag as the answer. (Format: HTB{...}) -&gt; HTB{roncfbw7iszerd7shni7jr2343zhrj}</li>
+<li>What is the customized version of the POP3 server? -&gt; InFreight POP3 v9.188</li>
+<li>What is the admin email address? -&gt; devadmin@inlanefreight.htb</li>
+<li>Try to access the emails on the IMAP server and submit the flag as the answer. (Format: HTB{...}) -&gt; HTB{983uzn8jmfgpd8jmof8c34n7zio}</li>
+<li>Enumerate the SNMP service and obtain the email address of the admin. Submit it as the answer. -&gt; devadmin@inlanefreight.htb</li>
+<li>What is the customized version of the SNMP server? -&gt; InFreight SNMP v0.91</li>
+<li>Enumerate the custom script that is running on the system and submit its output as the answer. -&gt; HTB{5nMp_fl4g_uidhfljnsldiuhbfsdij44738b2u763g}</li>
+<li>Enumerate the MySQL server and determine the version in use. (Format: MySQL X.X.XX) -&gt; MySQL 8.0.27</li>
+<li>During our penetration test, we found weak credentials &quot;robin:robin&quot;. We should try these against the MySQL server. What is the email address of the customer &quot;Otto Lang&quot;? -&gt; ultrices@google.htb</li>
+<li>Enumerate the target using the concepts taught in this section. List the hostname of MSSQL server. -&gt; ILF-SQL-01</li>
+<li>Connect to the MSSQL instance running on the target using the account (backdoorTongueassword1), then list the non-default database present on the server. -&gt; Employees</li>
+<li>Enumerate the target Oracle database and submit the password hash of the user DBSNMP as the answer. -&gt; E066D214D5421CCC</li>
+<li>What username is configured for accessing the host via IPMI? -&gt; admin</li>
+<li>What is the account&#39;s cleartext password? -&gt; trinity</li>
+<li>Enumerate the server carefully and find the flag.txt file. Submit the contents of this file as the answer. -&gt; HTB{7nrzise7hednrxihskjed7nzrgkweunj47zngrhdbkjhgdfbjkc7hgj}</li>
+<li>Enumerate the server carefully and find the username &quot;HTB&quot; and its password. Then, submit this user&#39;s password as the answer. -&gt; lnch7ehrdn43i7AoqVPK4zWR</li>
+<li>Enumerate the server carefully and find the username &quot;HTB&quot; and its password. Then, submit HTB&#39;s password as the answer. -&gt; cr3n4o7rzse7rzhnckhssncif7ds</li>
+</ol>
+<h2 id="module-information-gathering-web-edition">Module: Information Gathering - Web Edition</h2>
+<ol>
+<li>Perform a WHOIS lookup against the paypal.com domain. What is the registrar Internet Assigned Numbers Authority (IANA) ID number? -&gt; 292</li>
+<li>What is the admin email contact for the tesla.com domain (also in-scope for the Tesla bug bounty program)? -&gt; hostmaster@paypal.com</li>
+<li>Which subdomain is returned when querying the PTR record for 173.0.87.51? -&gt; cloudmonitor30.paypal.com</li>
+<li>What is the first mailserver returned when querying the MX records for paypal.com? -&gt; mx1.paypalcorp.com</li>
+<li>What Apache version is running on app.inlanefreight.local? (Format: 0.0.0) -&gt; 2.4.41</li>
+<li>Which CMS is used on app.inlanefreight.local? (Format: word) -&gt; joomla!</li>
+<li>On which operating system is the dev.inlanefreight.local webserver running on? (Format: word) -&gt; ubuntu</li>
+<li>Submit the FQDN of the nameserver for the &quot;inlanefreight.htb&quot; domain as the answer. -&gt; ns.inlanefreight.htb</li>
+<li>Identify how many zones exist on the target nameserver. Submit the number of found zones as the answer -&gt; 2</li>
+<li>Find and submit the contents of the TXT record as the answer. -&gt; ZONE_TRANSFER{87o2z3cno7zsoiedznxoi82z3o47xzhoi}</li>
+<li>What is the FQDN of the IP address 10.10.34.136? -&gt; ns2.internal.inlanefreight.htb</li>
+<li>What FQDN is assigned to the IP address 10.10.1.5? Submit the FQDN as the answer. -&gt; dc3.internal.inlanefreight.htb</li>
+<li>Which IP address is assigned to the &quot;us.inlanefreight.htb&quot; subdomain. Submit the IP address as the answer. -&gt; 10.10.200.5</li>
+<li>Submit the number of all &quot;A&quot; records from all zones as the answer. -&gt; 27</li>
+<li>Enumerate the target and find a vHost that contains flag No. 1. Submit the flag value as your answer (in the format HTB{DATA}). -&gt; HTB{h8973hrpiusnzjoie7zrou23i4zhmsxi8732zjso}</li>
+<li>Enumerate the target and find a vHost that contains flag No. 2. Submit the flag value as your answer (in the format HTB{DATA}). -&gt; HTB{u23i4zhmsxi872z3rn98h7nh2sxnbgriusd32zjso}</li>
+<li>Enumerate the target and find a vHost that contains flag No. 3. Submit the flag value as your answer (in the format HTB{DATA}). -&gt; HTB{Fl4gF0uR_o8763tznb4xou7zhgsniud7gfi734}</li>
+<li>Enumerate the target and find a vHost that contains flag No. 4. Submit the flag value as your answer (in the format HTB{DATA}). -&gt; HTB{bzghi7tghin2u76x3ghdni62higz7x3s}</li>
+<li>Find the specific vHost that starts with the letter &quot;d&quot; and submit the flag value as your answer (in the format HTB{DATA}). -&gt; HTB{7zbnr4i3n7zhrxn347zhh3dnrz4dh7zdjfbgn6d}</li>
+<li>What is the registrar IANA ID number for the githubapp.com domain? -&gt; 292</li>
+<li>What is the last mailserver returned when querying the MX records for githubapp.com? -&gt; aspmx5.googlemail.com</li>
+<li>Perform active infrastructure identification against the host <a href="https://i.imgur.com">https://i.imgur.com</a>. What server name is returned for the host? -&gt; cat factory 1.0</li>
+<li>Perform subdomain enumeration against the target githubapp.com. Which subdomain has the word &#39;triage&#39; in the name? -&gt; fastly-elephants.githubapp.com</li>
+</ol>
+<h2 id="module-vulnerability-assessment">Module: Vulnerability Assessment</h2>
+<ol>
+<li>What is the name of one of the accessible SMB shares from the authenticated Windows scan? (One word) -&gt; wsus</li>
+<li>What was the target for the authenticated scan? -&gt; 172.16.16.100</li>
+<li>What is the plugin ID of the highest criticality vulnerability for the Windows authenticated scan? -&gt; 156032</li>
+<li>What is the name of the vulnerability with plugin ID 26925 from the Windows authenticated scan? (Case sensitive) -&gt; VNC Server Unauthenticated Access</li>
+<li>What port is the VNC server running on in the authenticated Windows scan? -&gt; 5900</li>
+<li>What type of operating system is the Linux host running? (one word) -&gt; ubuntu</li>
+<li>What type of FTP vulnerability is on the Linux host? (Case Sensitive, four words) -&gt; Anonymous FTP Login Reporting</li>
+<li>What is the IP of the Linux host targeted for the scan? -&gt; 172.16.16.160</li>
+<li>What vulnerability is associated with the HTTP server? (Case-sensitive) -&gt; Cleartext Transmission of Sensitive Information via HTTP</li>
+</ol>
+<h2 id="module-file-transfers">Module: File Transfers</h2>
+<ol>
+<li>Download the file flag.txt from the web root using wget from the Pwnbox. Submit the contents of the file as your answer. -&gt; b1a4ca918282fcd96004565521944a3b</li>
+<li>Upload the attached file named upload_win.zip to the target using the method of your choice. Once uploaded, RDP to the box, unzip the archive, and run &quot;hasher upload_win.txt&quot; from the command line. Submit the generated hash as your answer. -&gt; f458303ea783c224c6b4e7ef7f17eb9d</li>
+<li>Download the file flag.txt from the web root using Python from the Pwnbox. Submit the contents of the file as your answer. -&gt; 5d21cf3da9c0ccb94f709e2559f3ea504. Upload the attached file named upload_nix.zip to the target using the method of your choice. Once uploaded, SSH to the box, extract the file, and run &quot;hasher &quot; from the command line. Submit the generated hash as your answer. -&gt; 159cfe5c65054bbadb2761cfa359c8b0</li>
+</ol>
+<h2 id="module-shells-payloads">Module: Shells &amp; Payloads</h2>
+<ol>
+<li>Which two shell languages did we experiment with in this section? (Format: shellname\&amp;shellname) -&gt; bash\&amp;powershell</li>
+<li>In Pwnbox issue the $PSversiontable variable using PowerShell. Submit the edition of PowerShell that is running as the answer. -&gt; core</li>
+<li>Des is able to issue the command nc -lvnp 443 on a Linux target. What port will she need to connect to from her attack box to successfully establish a shell session? -&gt; 443</li>
+<li>SSH to the target, create a bind shell, then use netcat to connect to the target using the bind shell you set up. When you have completed the exercise, submit the contents of the flag.txt file located at /customscripts. -&gt; B1nD_Shells_r_cool</li>
+<li>When establishing a reverse shell session with a target, will the target act as a client or server? -&gt; client</li>
+<li>Connect to the target via RDP and establish a reverse shell session with your attack box then submit the hostname of the target box. -&gt; Shells-Win10</li>
+<li>What command language interpreter is used to establish a system shell session with the target? -&gt; powershell</li>
+<li>Exploit the target using what you&#39;ve learned in this section, then submit the name of the file located in htb-student&#39;s Documents folder. (Format: filename.extension) -&gt; staffsalaries.txt</li>
+<li>What file type is a text-based DOS script used to perform tasks from the cli? (answer with the file extension, e.g. &#39;.something&#39;) -&gt; .bat</li>
+<li>What Windows exploit was dropped as a part of the Shadow Brokers leak? (Format: ms bulletin number, e.g. MSxx-xxx) -&gt; MS17-010</li>
+<li>Gain a shell on the vulnerable target, then submit the contents of the flag.txt file that can be found in C:\ -&gt; EB-Still-W0rk$</li>
+<li>What language is the payload written in that gets uploaded when executing rconfig_vendors_auth_file_upload_rce? -&gt; PHP</li>
+<li>Exploit the target and find the hostname of the router in the devicedetails directory at the root of the file system. -&gt; edgerouter-isp</li>
+<li>Establish a web shell session with the target using the concepts covered in this section. Submit the full path of the directory you land in. (Format: c:\path\you\land\in) -&gt; c:\windows\system32\inetsrv</li>
+<li>Where is the Laudanum aspx web shell located on Pwnbox? Submit the full path. (Format: /path/to/laudanum/aspx) -&gt; /usr/share/webshells/laudanum/aspx/shell.aspx</li>
+<li>Where is the Antak webshell located on Pwnbox? Submit the full path. (Format:/path/to/antakwebshell) -&gt; /usr/share/nishang/Antak-WebShell/antak.aspx</li>
+<li>Establish a web shell with the target using thc39f2beb3d2ec06a62cb887fb391dee0e concepts covered in this section. Submit the name of the user on the target that the commands are being issued as. In order to get the correct answer you must navigate to the web shell you upload using the vHost name. (Format: **, 1 space) -&gt; iis apppool\status</li>
+<li>In the example shown, what must the Content-Type be changed to in order to successfully upload the web shell? (Format: .../... ) -&gt; image/gif</li>
+<li>Use what you learned from the module to gain a web shell. What is the file name of the gif in the /images/vendor directory on the target? (Format: xxxx.gif) -&gt; ajax-loader.gif</li>
+<li>What is the hostname of Host-1? (Format: all lower case) -&gt; shells-winsvr</li>
+<li>Exploit the target and gain a shell session. Submit the name of the folder located in C:\Shares\ (Format: all lower case) -&gt; dev-share</li>
+<li>What distribution of Linux is running on Host-2? (Format: distro name, all lower case) -&gt; ubuntu</li>
+<li>What language is the shell written in that gets uploaded when using the 50064.rb exploit? -&gt; php</li>
+<li>Exploit the blog site and establish a shell session with the target OS. Submit the contents of /customscripts/flag.txt -&gt; B1nD_Shells_r_cool</li>
+<li>What is the hostname of Host-3? -&gt; shells-winblue</li>
+<li>Exploit and gain a shell session with Host-3. Then submit the contents of C:\Users\Administrator\Desktop\Skills-flag.txt -&gt; One-H0st-Down!</li>
+</ol>
+<h2 id="module-using-the-metasploit-framework">Module: Using the Metasploit Framework</h2>
+<ol>
+<li>Which version of Metasploit comes equipped with a GUI interface? -&gt; metasploit pro</li>
+<li>What command do you use to interact with the free version of Metasploit? -&gt; msfconsole</li>
+<li>Use the Metasploit-Framework to exploit the target with EternalRomance. Find the flag.txt file on Administrator&#39;s desktop and submit the contents as the answer. -&gt; HTB{MSF-W1nD0w5-3xPL01t4t10n}</li>
+<li>Exploit the Apache Druid service and find the flag.txt file. Submit the contents of this file as the answer. -&gt; HTB{MSF_Expl01t4t10n}</li>
+<li>The target has a specific web application running that we can find by looking into the HTML source code. What is the name of that web application? -&gt; elfinder</li>
+<li>Find the existing exploit in MSF and use it to get a shell on the target. What is the username of the user you obtained a shell with? -&gt; www-data</li>
+<li>The target system has an old version of Sudo running. Find the relevant exploit and get root access to the target system. Find the flag.txt file and submit the contents of it as the answer. -&gt; HTB{5e55ion5_4r3_sw33t}</li>
+<li>Find the existing exploit in MSF and use it to get a shell on the target. What is the username of the user you obtained a shell with? -&gt; NT AUTHORITY\SYSTEM</li>
+<li>Retrieve the NTLM password hash for the &quot;htb-student&quot; user. Submit the hash as the answer. -&gt; cf3a5525ee9414229e66279623ed5c58</li>
+</ol>
+<h2 id="module-password-attacks">Module: Password Attacks</h2>
+<ol>
+<li>Find the user for the WinRM service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer -&gt; HTB{That5Novemb3r}</li>
+<li>Find the user for the SSH service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer. -&gt; HTB{Let5R0ck1t}</li>
+<li>Find the user for the RDP service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer. -&gt; HTB{R3m0t3DeskIsw4yT00easy}</li>
+<li>Find the user for the SMB service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer. -&gt; HTB{S4ndM4ndB33}</li>
+<li>Create a mutated wordlist using the files in the ZIP file under &quot;Resources&quot; in the top right corner of this section. Use this wordlist to brute force the password for the user &quot;sam&quot;. Once successful, log in with SSH and submit the contents of the flag.txt file as your answer. -&gt; HTB{P455_Mu7ations}</li>
+<li>Use the user&#39;s credentials we found in the previous section and find out the credentials for MySQL. Submit the credentials as the answer. (Format: :) -&gt; superdba:admin</li>
+<li>Where is the SAM database located in the Windows registry? (Format: <em>*</em>) -&gt; hklm\sam</li>
+<li>Apply the concepts taught in this section to obtain the password to the ITbackdoor user account on the target. Submit the clear-text password as the answer. -&gt; matrix</li>
+<li>Dump the LSA secrets on the target and discover the credentials stored. Submit the username and password as the answer. (Format: username:password, Case-Sensitive) -&gt; frontdeskTongueassword123</li>
+<li>What is the name of the executable file associated with the Local Security Authority Process? -&gt; lsass.exe</li>
+<li>Apply the concepts taught in this section to obtain the password to the Vendor user account on the target. Submit the clear-text password as the answer. (Format: Case sensitive) -&gt; Mic@123</li>
+<li>What is the name of the file stored on a domain controller that contains the password hashes of all domain accounts? (Format: *.**) -&gt; ntds.dit</li>
+<li>Submit the NT hash associated with the Administrator user from the example output in the section reading. -&gt; 64f12cddaa88057e06a81b54e73b949b</li>
+<li>On an engagement you have gone on several social media sites and found the Inlanefreight employee names: John Marston IT Director, Carol Johnson Financial Controller and Jennifer Stapleton Logistics Manager. You decide to use these names to conduct your password attacks against the target domain controller. Submit John Marston&#39;s credentials as the answer. (Format: username:password, Case-Sensitive) -&gt; jmarstonTongue@ssword!</li>
+<li>Capture the NTDS.dit file and dump the hashes. Use the techniques taught in this section to crack Jennifer Stapleton&#39;s password. Submit her clear-text password as the answer. (Format: Case-Sensitive) -&gt; Winter2008</li>
+<li>What password does Bob use to connect to the Switches via SSH? (Format: Case-Sensitive) -&gt; WellConnected123</li>
+<li>What is the GitLab access code Bob uses? (Format: Case-Sensitive) -&gt; 3z1ePfGbjWPsTfCsZfjy</li>
+<li>What credentials does Bob use with WinSCP to connect to the file server? (Format: username:password, Case-Sensitive) -&gt; ubuntu:FSadmin123</li>
+<li>What is the default password of every newly created Inlanefreight Domain user account? (Format: Case-Sensitive) -&gt; Inlanefreightisgreat2022</li>
+<li>What are the credentials to access the Edge-Router? (Format: username:password, Case-Sensitive) -&gt; edgeadmin:Edge@dmin123!</li>
+<li>Examine the target and find out the password of the user Will. Then, submit the password as the answer. -&gt; TUqr7QfLTLhruhVbCP</li>
+<li>Examine the target using the credentials from the user Will and find out the password of the &quot;root&quot; user. Then, submit the password as the answer. -&gt; J0rd@n5</li>
+<li>Access the target machine using any Pass-the-Hash tool. Submit the contents of the file located at C:\pth.txt. -&gt; G3t_4CCE\$$_V1@_PTH</li>
+<li>Try to connect via RDP using the Administrator hash. What is the name of the registry value that must be set to 0 for PTH over RDP to work? Change the registry key value and connect using the hash with RDP. Submit the name of the registry value name as the answer. -&gt; DisableRestrictedAdmin</li>
+<li>Connect via RDP and use Mimikatz located in c:\tools to extract the hashes presented in the current session. What is the NTLM/RC4 hash of David&#39;s account? -&gt; c39f2beb3d2ec06a62cb887fb391dee0</li>
+<li>Using David&#39;s hash, perform a Pass the Hash attack to connect to the shared folder \DC01\david and read the file david.txt. -&gt; D3V1d_Fl5g_is_Her3</li>
+<li>Using Julio&#39;s hash, perform a Pass the Hash attack to connect to the shared folder \DC01\julio and read the file julio.txt. -&gt; JuL1()_SH@re_fl@g</li>
+<li>Using Julio&#39;s hash, perform a Pass the Hash attack, launch a PowerShell console and import Invoke-TheHash to create a reverse shell to the machine you are connected via RDP (the target machine, DC01, can only connect to MS01). Use the tool nc.exe located in c:\tools to listen for the reverse shell. Once connected to the DC01, read the flag in C:\julio\flag.txt. -&gt; JuL1()_N3w_fl@g</li>
+<li>Connect to the target machine using RDP and the provided creds. Export all tickets present on the computer. How many users TGT did you collect? -&gt; 3</li>
+<li>Use john&#39;s TGT to perform a Pass the Ticket attack and retrieve the flag from the shared folder \DC01.inlanefreight.htb\john -&gt; Learn1ng_M0r3_Tr1cks_with_J0hn</li>
+<li>Use john&#39;s TGT to perform a Pass the Ticket attack and connect to the DC01 using PowerShell Remoting. Read the flag from C:\john\john.txt -&gt; P4\$$_th3_Tick3T_PSR</li>
+<li>Connect to the target machine using SSH to the port TCP/2222 and the provided credentials. Read the flag in David&#39;s home directory. -&gt; Gett1ng_Acc3\$$_to_LINUX01</li>
+<li>Which group can connect to LINUX01? -&gt; Linux Admins</li>
+<li>Look for a keytab file that you have read and write access. Submit the file name as a response. -&gt; carlos.keytab</li>
+<li>Extract the hashes from the keytab file you found, crack the password, log in as the user and submit the flag in the user&#39;s home directory. -&gt; C@rl0s_1$_H3r3</li>
+<li>Check Carlos&#39; crontab, and look for keytabs to which Carlos has access. Try to get the credentials of the user svc_workstations and use them to authenticate via SSH. Submit the flag.txt in svc_workstations&#39; home directory. -&gt; Mor3_4cce\$$_m0r3_Pr1v$</li>
+<li>Check svc_workstation&#39;s sudo privileges and get access as root. Submit the flag in /root/flag.txt directory as the response -&gt; Ro0t_Pwn_K3yT4b</li>
+<li>Check the /tmp directory and find Julio&#39;s Kerberos ticket (ccache file). Import the ticket and read the contents of julio.txt from the domain share folder \DC01\julio. -&gt; JuL1()_SH@re_fl@g</li>
+<li>Use the LINUX01$ Kerberos ticket to read the flag found in \DC01\linux01. Submit the contents as your response (the flag starts with Us1nG_). -&gt; Us1nG_KeyTab_Like_@_PRO</li>
+<li>Use the cracked password of the user Kira and log in to the host and crack the &quot;id_rsa&quot; SSH key. Then, submit the password for the SSH key as the answer. -&gt; L0veme</li>
+<li>Use the cracked password of the user Kira, log in to the host, and read the Notes.zip file containing the flag. Then, submit the flag as the answer. -&gt; HTB{ocnc7r4io8ucsj8eujcm}</li>
+<li>Examine the first target and submit the root password as the answer. -&gt; dgb6fzm0ynk@AME9pqu</li>
+<li>Examine the second target and submit the contents of flag.txt in /root/ as the answer. -&gt; HTB{PeopleReuse_PWsEverywhere!}</li>
+<li>Examine the third target and submit the contents of flag.txt in C:\Users\Administrator\Desktop\ as the answer. -&gt; HTB{PWcr4ck1ngokokok}</li>
+</ol>
+<h2 id="module-attacking-common-services">Module: Attacking Common Services</h2>
+<ol>
+<li>What port is the FTP service running on? -&gt; 2121</li>
+<li>What username is available for the FTP server? -&gt; robin</li>
+<li>Use the discovered username with its password to login via SSH and obtain the flag.txt file. Submit the contents as your answer. -&gt; HTB{ATT4CK1NG_F7P_53RV1C3}</li>
+<li>What is the name of the shared folder with READ permissions? -&gt; ggj</li>
+<li>What is the password for the username &quot;jason&quot;? -&gt; 34c8zuNBo91!@28Bszh</li>
+<li>Login as the user &quot;jason&quot; via SSH and find the flag.txt file. Submit the contents as your answer. -&gt; HTB{SMB_4TT4CKS_2349872359}</li>
+<li>What is the password for the &quot;mssqlsvc&quot; user? -&gt; princess1</li>
+<li>Enumerate the &quot;flagDB&quot; database and submit a flag as your answer. -&gt; HTB{!l0v3#4$#!n9_4nd_r3$p0nd3r}</li>
+<li>What is the name of the file that was left on the Desktop? (Format example: filename.txt) -&gt; pentest-notes.txt</li>
+<li>Which registry key needs to be changed to allow Pass-the-Hash with the RDP protocol? -&gt; disablerestrictedadmin</li>
+<li>Connect via RDP with the Administrator account and submit the flag.txt as you answer. -&gt; HTB{RDP_P4\$$_Th3_H4$#}</li>
+<li>Find all available DNS records for the &quot;inlanefreight.htb&quot; domain on the target name server and submit the flag found as a DNS record as the answer. -&gt; HTB{LUIHNFAS2871SJK1259991}</li>
+<li>What is the available username for the domain inlanefreight.htb in the SMTP server? -&gt; marlin</li>
+<li>Access the email account using the user credentials that you discovered and submit the flag in the email as your answer. -&gt; HTB{w34k_p4\$$w0rd}</li>
+<li>You are targeting the inlanefreight.htb domain. Assess the target server and obtain the contents of the flag.txt file. Submit it as the answer. -&gt; HTB{t#3r3_4r3_tw0_w4y$_t0_93t_t#3_fl49}</li>
+<li>Assess the target server and find the flag.txt file. Submit the contents of this file as your answer. -&gt; HTB{1qay2wsx3EDC4rfv_M3D1UM}</li>
+<li>What file can you retrieve that belongs to the user &quot;simon&quot;? (Format: filename.txt) -&gt; random.txt</li>
+<li>Enumerate the target and find a password for the user Fiona. What is her password? -&gt; 48Ns72!bns74@S84NNNSl</li>
+<li>Once logged in, what other user can we compromise to gain admin privileges? -&gt; john</li>
+<li>Submit the contents of the flag.txt file on the Administrator Desktop -&gt; HTB{46u$!n9_l!nk3d_$3rv3r$}</li>
+</ol>
+<h2 id="module-pivoting-tunneling-and-port-forwarding">Module: Pivoting, Tunneling, and Port Forwarding</h2>
+<ol>
+<li>Reference the Using ifconfig output in the section reading. Which NIC is assigned a public IP address? -&gt; eth0</li>
+<li>Reference the Routing Table on Pwnbox output shown in the section reading. If a packet is destined for a host with the IP address of 10.129.10.25, out of which NIC will the packet be forwarded? -&gt; tun0</li>
+<li>Reference the Routing Table on Pwnbox output shown in the section reading. If a packet is destined for www.hackthebox.com what is the IP address of the gateway it will be sent to? -&gt; 178.62.64.1</li>
+<li>You have successfully captured credentials to an external facing Web Server. Connect to the target and list the network interfaces. How many network interfaces does the target web server have? (Including the loopback interface) -&gt; 3</li>
+<li>Apply the concepts taught in this section to pivot to the internal network and use RDP (credentials: victor:pass@123) to take control of the Windows target on 172.16.5.19. Submit the contents of Flag.txt located on the Desktop. -&gt; N1c3Piv0t</li>
+<li>Which IP address assigned to the Ubuntu server Pivot host allows communication with the Windows server target? (Format: x.x.x.x) -&gt; 172.16.5.129</li>
+<li>What IP address is used on the attack host to ensure the handler is listening on all IP addresses assigned to the host? (Format: x.x.x.x) -&gt; 0.0.0.0</li>
+<li>What two IP addresses can be discovered when attempting a ping sweep from the Ubuntu pivot host? (Format: x.x.x.x,x.x.x.x) -&gt; 172.16.5.19,172.16.5.129</li>
+<li>Which of the routes that AutoRoute adds allows 172.16.5.19 to be reachable from the attack host? (Format: x.x.x.x/x.x.x.x) -&gt; 172.16.5.0/255.255.254.0</li>
+<li>SSH tunneling is required with Socat. True or False? -&gt; FALSE</li>
+<li>What Meterpreter payload did we use to catch the bind shell session? (Submit the full path as the answer) -&gt; windows/x64/meterpreter/bind_tcp</li>
+<li>From which host will rpivot&#39;s server.py need to be run from? The Pivot Host or Attack Host? Submit Pivot Host or Attack Host as the answer. -&gt; attack host</li>
+<li>From which host will rpivot&#39;s client.py need to be run from? The Pivot Host or Attack Host. Submit Pivot Host or Attack Host as the answer. -&gt; pivot host</li>
+<li>Using the concepts taught in this section, connect to the web server on the internal network. Submit the flag presented on the home page as the answer. -&gt; I_L0v3_Pr0xy_Ch@ins</li>
+<li>Using the concepts covered in this section, take control of the DC (172.16.5.19) using xfreerdp by pivoting through the Windows 10 target host. Submit the approved contact&#39;s name found inside the &quot;VendorContacts.txt&quot; file located in the &quot;Approved Vendors&quot; folder on Victor&#39;s desktop (victor&#39;s credentials: victor:pass@123) . (Format: 1 space, not case-sensitive) -&gt; jim flipflop16. Using the concepts taught in this section, connect to the target and establish a DNS Tunnel that provides a shell session. Submit the contents of C:\Users\htb-student\Documents\flag.txt as the answer. -&gt; AC@tinth3Tunnel</li>
+<li>Using the concepts taught in this section, connect to the target and establish a SOCKS5 Tunnel that can be used to RDP into the domain controller (172.16.5.19, victor:pass@123). Submit the contents of C:\Users\victor\Documents\flag.txt as the answer. -&gt; Th3$eTunne1$@rent8oring!</li>
+<li>Using the concepts taught thus far, connect to the target and establish an ICMP tunnel. Pivot to the DC (172.16.5.19, victor:pass@123) and submit the contents of C:\Users\victor\Downloads\flag.txt as the answer. -&gt; N3Tw0rkTunnelV1sion!</li>
+<li>Use the concepts taught in this section to pivot to the Windows server at 172.16.6.155 (jason:WellConnected123!). Submit the contents of Flag.txt on Jason&#39;s Desktop. -&gt; H0pping@roundwithRDP!</li>
+<li>&#x20;Once on the webserver, enumerate the host for credentials that can be used to start a pivot or tunnel to another host in the network. In what user&#39;s directory can you find the credentials? Submit the name of the user as the answer. -&gt; webadmin</li>
+<li>Submit the credentials found in the user&#39;s home directory. (Format: user:password) -&gt; mlefayTonguelain Human work!</li>
+<li>Enumerate the internal network and discover another active host. Submit the IP address of that host as the answer. -&gt; 172.16.5.35</li>
+<li>Use the information you gathered to pivot to the discovered host. Submit the contents of C:\Flag.txt as the answer -&gt; S1ngl3-Piv07-3@sy-Day</li>
+<li>In previous pentests against Inlanefreight, we have seen that they have a bad habit of utilizing accounts with services in a way that exposes the users credentials and the network as a whole. What user is vulnerable? -&gt; vfrank</li>
+<li>For your next hop enumerate the networks and then utilize a common remote access solution to pivot. Submit the C:\Flag.txt located on the workstation. -&gt; N3tw0rk-H0pp1ng-f0R-FuN</li>
+<li>Submit the contents of C:\Flag.txt located on the Domain Controller. -&gt; 3nd-0xf-Th3-R@inbow!</li>
+</ol>
+<h2 id="module-active-directory-enumeration-attacks">Module: Active Directory Enumeration &amp; Attacks</h2>
+<ol>
+<li>While looking at inlanefreights public records; A flag can be seen. Find the flag and submit it. ( format == HTB{**} ) -&gt; HTB{5Fz6UPNUFFzqjdg0AzXyxCjMZ}</li>
+<li>From your scans, what is the &quot;commonName&quot; of host 172.16.5.5 ? -&gt; ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL</li>
+<li>What host is running &quot;Microsoft SQL Server 2019 15.00.2000.00&quot;? (IP address, not Resolved name) -&gt; 172.16.5.130</li>
+<li>Run Responder and obtain a hash for a user account that starts with the letter b. Submit the account name as your answer. -&gt; backupagent</li>
+<li>Crack the hash for the previous account and submit the cleartext password as your answer. -&gt; h1backup55</li>
+<li>Run Responder and obtain an NTLMv2 hash for the user wley. Crack the hash using Hashcat and submit the user&#39;s password as your answer -&gt; transporter@4</li>
+<li>Run Inveigh and capture the NTLMv2 hash for the svc_qualys account. Crack and submit the cleartext password as the answer. -&gt; security#1</li>
+<li>What is the default Minimum password length when a new domain is created? (One number) -&gt; 7</li>
+<li>What is the minPwdLength set to in the INLANEFREIGHT.LOCAL domain? (One number) -&gt; 8</li>
+<li>Enumerate valid usernames using Kerbrute and the wordlist located at /opt/jsmith.txt on the ATTACK01 host. How many valid usernames can we enumerate with just this wordlist from an unauthenticated standpoint? -&gt; 56</li>
+<li>Find the user account starting with the letter &quot;s&quot; that has the password Welcome1. Submit the username as your answer. -&gt; sgage</li>
+<li>Using the examples shown in this section, find a user with the password Winter2022. Submit the username as the answer. -&gt; dbranch</li>
+<li>What AD User has a RID equal to Decimal 1170? -&gt; mmorgan</li>
+<li>What is the membercount: of the &quot;Interns&quot; group? -&gt; 10</li>
+<li>Using Bloodhound, determine how many Kerberoastable accounts exist within the INLANEFREIGHT domain. (Submit the number as the answer) -&gt; 13</li>
+<li>What PowerView function allows us to test if a user has administrative access to a local or remote host? -&gt; test-adminaccess</li>
+<li>Run Snaffler and hunt for a readable web config file. What is the name of the user in the connection string within the file? -&gt; sa</li>
+<li>What is the password for the database user? -&gt; ILFREIGHTDB01!</li>
+<li>Enumerate the host&#39;s security configuration information and provide its AMProductVersion. -&gt; 4.18.2109.6</li>
+<li>What domain user is explicitly listed as a member of the local Administrators group on the target host? -&gt; adunn</li>
+<li>Utilizing techniques learned in this section, find the flag hidden in the description field of a disabled account with administrative privileges. Submit the flag as the answer. -&gt; HTB{LD@P_I$_W1ld}</li>
+<li>Retrieve the TGS ticket for the SAPService account. Crack the ticket offline and submit the password as your answer. -&gt; !SapperFi2</li>
+<li>What powerful local group on the Domain Controller is the SAPService user a member of? -&gt; account operators</li>
+<li>What is the name of the service account with the SPN &#39;vmware/inlanefreight.local&#39;? -&gt; svc_vmwaresso</li>
+<li>Crack the password for this account and submit it as your answer. -&gt; Virtual01</li>
+<li>What type of ACL defines which security principals are granted or denied access to an object? (one word) -&gt; DACL</li>
+<li>Which ACE entry can be leveraged to perform a targeted Kerberoasting attack? -&gt; GenericAll</li>
+<li>What is the rights GUID for User-Force-Change-Password? -&gt; 00299570-246d-11d0-a768-00aa006e0529</li>
+<li>What flag can we use with PowerView to show us the ObjectAceType in a human-readable format during our enumeration? -&gt; resolveguids</li>
+<li>What privileges does the user damundsen have over the Help Desk Level 1 group? -&gt; GenericWrite</li>
+<li>Using the skills learned in this section, enumerate the ActiveDirectoryRights that the user forend has over the user dpayne (Dagmar Payne). -&gt; GenericAll</li>
+<li>What is the ObjectAceType of the first right that the forend user has over the GPO Management group? (two words in the format Word-Word) -&gt; Self-Membership</li>
+<li>Work through the examples in this section to gain a better understanding of ACL abuse and performing these skills hands-on. Set a fake SPN for the adunn account, Kerberoast the user, and crack the hash using Hashcat. Submit the account&#39;s cleartext password as your answer. -&gt; SyncMaster757</li>
+<li>Perform a DCSync attack and look for another user with the option &quot;Store password using reversible encryption&quot; set. Submit the username as your answer. -&gt; syncron</li>
+<li>What is this user&#39;s cleartext password? -&gt; Mycleart3xtP@ss!</li>
+<li>Perform a DCSync attack and submit the NTLM hash for the khartsfield user as your answer. -&gt; 4bb3b317845f0954200a6b0acc9b9f9a</li>
+<li>What other user in the domain has CanPSRemote rights to a host? -&gt; bdavis</li>
+<li>What host can this user access via WinRM? (just the computer name) -&gt; academy-ea-dc01</li>
+<li>Leverage SQLAdmin rights to authenticate to the ACADEMY-EA-DB01 host (172.16.5.150). Submit the contents of the flag at C:\Users\damundsen\Desktop\flag.txt. -&gt; 1m_the_sQl_@dm1n_n0w!</li>
+<li>Which two CVEs indicate NoPac.py may work? (Format: ####-#####\&amp;####-#####, no spaces) -&gt; 2021-42278&amp;2021-42287</li>
+<li>Apply what was taught in this section to gain a shell on DC01. Submit the contents of flag.txt located in the DailyTasks directory on the Administrator&#39;s desktop. -&gt; D0ntSl@ckonN0P@c!</li>
+<li>Find another user with the passwd_notreqd field set. Submit the samaccountname as your answer. The samaccountname starts with the letter &quot;y&quot;. -&gt; ygroce</li>
+<li>Find another user with the &quot;Do not require Kerberos pre-authentication setting&quot; enabled. Perform an ASREPRoasting attack against this user, crack the hash, and submit their cleartext password as your answer. -&gt; Pass@word</li>
+<li>What is the child domain of INLANEFREIGHT.LOCAL? (format: FQDN, i.e., DEV.ACME.LOCAL) -&gt; logistics.inlanefreight.local</li>
+<li>What domain does the INLANEFREIGHT.LOCAL domain have a forest transitive trust with? -&gt; freightlogistics.local</li>
+<li>What direction is this trust? -&gt; bidirectional</li>
+<li>What is the SID of the child domain? -&gt; S-1-5-21-2806153819-209893948-922872689</li>
+<li>What is the SID of the Enterprise Admins group in the root domain? -&gt; S-1-5-21-3842939050-3880317879-2865463114-519</li>
+<li>Perform the ExtraSids attack to compromise the parent domain. Submit the contents of the flag.txt file located in the c:\ExtraSids folder on the ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL domain controller in the parent domain. -&gt; f@ll1ng_l1k3_d0m1no3$</li>
+<li>Perform the ExtraSids attack to compromise the parent domain from the Linux attack host. After compromising the parent domain obtain the NTLM hash for the Domain Admin user bross. Submit this hash as your answer. -&gt; 49a074a39dd0651f647e765c2cc794c7</li>
+<li>Perform a cross-forest Kerberoast attack and obtain the TGS for the mssqlsvc user. Crack the ticket and submit the account&#39;s cleartext password as your answer. -&gt; 1logistics</li>
+<li>Kerberoast across the forest trust from the Linux attack host. Submit the name of another account with an SPN aside from MSSQLsvc. -&gt; sapsso</li>
+<li>Crack the TGS and submit the cleartext password as your answer. -&gt; pabloPICASSO</li>
+<li>Log in to the ACADEMY-EA-DC03.FREIGHTLOGISTICS.LOCAL Domain Controller using the Domain Admin account password submitted for question #2 and submit the contents of the flag.txt file on the Administrator desktop. -&gt; burn1ng_d0wn_th3_f0rest!</li>
+<li>Submit the contents of the flag.txt file on the administrator Desktop of the web server -&gt; JusT_g3tt1ng_st@rt3d!</li>
+<li>Kerberoast an account with the SPN MSSQLSvc/SQL01.inlanefreight.local:1433 and submit the account name as your answer -&gt; svc_sql</li>
+<li>Crack the account&#39;s password. Submit the cleartext value. -&gt; lucky7</li>
+<li>Submit the contents of the flag.txt file on the Administrator desktop on MS01 -&gt; spn$r0ast1ng_on@n_0p3n_f1re</li>
+<li>Find cleartext credentials for another domain user. Submit the username as your answer. -&gt; tpetty</li>
+<li>Submit this user&#39;s cleartext password. -&gt; Sup3rS3cur3D0m@inU2eR</li>
+<li>What attack can this user perform? -&gt; dcsync</li>
+<li>Take over the domain and submit the contents of the flag.txt file on the Administrator Desktop on DC01 -&gt; r3plicat1on_m@st3r!</li>
+<li>Obtain a password hash for a domain user account that can be leveraged to gain a foothold in the domain. What is the account name? -&gt; ab920</li>
+<li>What is this user&#39;s cleartext password? -&gt; weasal</li>
+<li>Submit the contents of the C:\flag.txt file on MS01. -&gt; aud1t_gr0up_m3mbersh1ps!</li>
+<li>Use a common method to obtain weak credentials for another user. Submit the username for the user whose credentials you obtain -&gt; BR086</li>
+<li>What is this user&#39;s password? -&gt; Welcome1</li>
+<li>Locate a configuration file containing an MSSQL connection string. What is the password for the user listed in this file? -&gt; D@ta_bAse_adm1n!</li>
+<li>Submit the contents of the flag.txt file on the Administrator Desktop on the SQL01 host. -&gt; s3imp3rs0nate_cl@ssic</li>
+<li>Submit the contents of the flag.txt file on the Administrator Desktop on the MS01 host. -&gt; exc3ss1ve_adm1n_r1ights!</li>
+<li>Obtain credentials for a user who has GenericAll rights over the Domain Admins group. What&#39;s this user&#39;s account name? -&gt; CT059</li>
+<li>Crack this user&#39;s password hash and submit the cleartext password as your answer. -&gt; charlie1</li>
+<li>Submit the contents of the flag.txt file on the Administrator desktop on the DC01 host. -&gt; acLs_f0r_th3_w1n!</li>
+<li>Submit the NTLM hash for the KRBTGT account for the target domain after achieving domain compromise. -&gt; 7eba70412d81c1cd030d72a3e8dbe05f</li>
+</ol>
+<h2 id="module-using-web-proxies">Module: Using Web Proxies</h2>
+<ol>
+<li>Try intercepting the ping request on the server shown above, and change the post data similarly to what we did in this section. Change the command to read &#39;flag.txt&#39; -&gt; HTB{1n73rc3p73d_1n_7h3_m1ddl3}</li>
+<li>Try using request repeating to be able to quickly test commands. With that, try looking for the other flag. -&gt; HTB{qu1ckly_r3p3471n6_r3qu3575}</li>
+<li>The string found in the attached file has been encoded several times with various encoders. Try to use the decoding tools we discussed to decode it and get the flag. -&gt; HTB{3nc0d1n6_n1nj4}</li>
+<li>Try running &#39;auxiliary/scanner/http/http_put&#39; in Metasploit on any website, while routing the traffic through Burp. Once you view the requests sent, what is the last line in the request? -&gt; msf test file</li>
+<li>Use Burp Intruder to fuzz for &#39;.html&#39; files under the /admin directory, to find a file containing the flag. -&gt; HTB{burp_1n7rud3r_fuzz3r!}</li>
+<li>The directory we found above sets the cookie to the md5 hash of the username, as we can see the md5 cookie in the request for the (guest) user. Visit &#39;/skills/&#39; to get a request with a cookie, then try to use ZAP Fuzzer to fuzz the cookie for different md5 hashed usernames to get the flag. Use the &quot;top-usernames-shortlist.txt&quot; wordlist from Seclists. -&gt; HTB{fuzz1n6_my_f1r57_c00k13}</li>
+<li>Run ZAP Scanner on the target above to identify directories and potential vulnerabilities. Once you find the high-level vulnerability, try to use it to read the flag at &#39;/flag.txt&#39; -&gt; HTB{5c4nn3r5_f1nd_vuln5_w3_m155}</li>
+<li>The /lucky.php page has a button that appears to be disabled. Try to enable the button, and then click it to get the flag. -&gt; HTB{d154bl3d_bu770n5_w0n7_570p_m3}</li>
+<li>The /admin.php page uses a cookie that has been encoded multiple times. Try to decode the cookie until you get a value with 31-characters. Submit the value as the answer. -&gt; 3dac93b8cd250aa8c1a36fffc79a17a</li>
+<li>Once you decode the cookie, you will notice that it is only 31 characters long, which appears to be an md5 hash missing its last character. So, try to fuzz the last character of the decoded md5 cookie with all alpha-numeric characters, while encoding each request with the encoding methods you identified above. (You may use the &quot;alphanum-case.txt&quot; wordlist from Seclist for the payload) -&gt; HTB{burp_1n7rud3r_n1nj4!}</li>
+<li>You are using the &#39;auxiliary/scanner/http/coldfusion_locale_traversal&#39; tool within Metasploit, but it is not working properly for you. You decide to capture the request sent by Metasploit so you can manually verify it and repeat it. Once you capture the request, what is the &#39;XXXXX&#39; directory being called in &#39;/XXXXX/administrator/..&#39;? -&gt; cfide</li>
+</ol>
+<h2 id="module-attacking-web-applications-with-ffuf">Module: Attacking Web Applications with FFUF</h2>
+<ol>
+<li>In addition to the directory we found above, there is another directory that can be found. What is it? -&gt; forum</li>
+<li>Try to use what you learned in this section to fuzz the &#39;/blog&#39; directory and find all pages. One of them should contain a flag. What is the flag? -&gt; HTB{bru73_f0r_c0mm0n_p455w0rd5}</li>
+<li>Try to repeat what you learned so far to find more files/directories. One of them should give you a flag. What is the content of the flag? -&gt; HTB{fuzz1n6_7h3_w3b!}</li>
+<li>Try running a sub-domain fuzzing test on &#39;inlanefreight.com&#39; to find a customer sub-domain portal. What is the full domain of it? -&gt; store.hackthebox.eu</li>
+<li>Try running a VHost fuzzing scan on &#39;academy.htb&#39;, and see what other VHosts you get. What other VHosts did you get? -&gt; test.academy.htb</li>
+<li>Using what you learned in this section, run a parameter fuzzing scan on this page. what is the parameter accepted by this webpage? -&gt; user</li>
+<li>Try to create the &#39;ids.txt&#39; wordlist, identify the accepted value with a fuzzing scan, and then use it in a &#39;POST&#39; request with &#39;curl&#39; to collect the flag. What is the content of the flag? -&gt; HTB{p4r4m373r_fuzz1n6_15_k3y!}</li>
+<li>Run a sub-domain/vhost fuzzing scan on &#39;*.academy.htb&#39; for the IP shown above. What are all the sub-domains you can identify? (Only write the sub-domain name) -&gt; archive test faculty</li>
+<li>Before you run your page fuzzing scan, you should first run an extension fuzzing scan. What are the different extensions accepted by the domains? -&gt; php7 phps php</li>
+<li>One of the pages you will identify should say &#39;You don&#39;t have access!&#39;. What is the full page URL? -&gt; <a href="http://faculty.academy.htb:PORT/courses/linux-security.php7">http://faculty.academy.htb:PORT/courses/linux-security.php7</a></li>
+<li>In the page from the previous question, you should be able to find multiple parameters that are accepted by the page. What are they? -&gt; username user</li>
+<li>Try fuzzing the parameters you identified for working values. One of them should return a flag. What is the content of the flag? -&gt; HTB{w3b_fuzz1n6_m4573r}</li>
+</ol>
+<h2 id="module-login-brute-forcing">Module: Login Brute Forcing</h2>
+<ol>
+<li>Using the technique you learned in this section, try attacking the IP shown above. What are the credentials used? -&gt; admin:admin</li>
+<li>Try running the same exercise on the question from the previous section, to learn how to brute force for users. -&gt; admin:admin</li>
+<li>Using what you learned in this section, try attacking the &#39;/login.php&#39; page to identify the password for the &#39;admin&#39; user. Once you login, you should find a flag. Submit the flag as the answer. -&gt; HTB{bru73_f0rc1n6_15_4_l457_r350r7}</li>
+<li>Using what you learned in this section, try to brute force the SSH login of the user &quot;b.gates&quot; in the target server shown above. Then try to SSH into the server. You should find a flag in the home dir. What is the content of the flag? -&gt; HTB{n3v3r_u53_c0mm0n_p455w0rd5!}</li>
+<li>Once you ssh in, try brute forcing the FTP login for the other user. You should find another flag in their home directory. What is the flag? -&gt; HTB{1_4m_@_bru73_f0rc1n6_m4573r}</li>
+<li>When you try to access the IP shown above, you will not have authorization to access it. Brute force the authentication and retrieve the flag. -&gt; HTB{4lw4y5_ch4n63_d3f4ul7_p455w0rd5}</li>
+<li>Once you access the login page, you are tasked to brute force your way into this page as well. What is the flag hidden inside? -&gt; HTB{c0mm0n_p455w0rd5_w1ll_4lw4y5_b3_h4ck3d!}</li>
+<li>As you now have the name of an employee from the previous skills assessment question, try to gather basic information about them, and generate a custom password wordlist that meets the password policy. Also use &#39;usernameGenerator&#39; to generate potential usernames for the employee. Finally, try to brute force the SSH server shown above to get the flag. -&gt; HTB{4lw4y5_u53_r4nd0m_p455w0rd_63n3r470r}</li>
+<li>Once you are in, you should find that another user exists in server. Try to brute force their login, and get their flag. -&gt; HTB{1_50l3mnly_5w34r_7h47_1_w1ll_u53_r4nd0m_p455w0rd5}</li>
+</ol>
+<h2 id="module-sql-injection-fundamentals">Module: SQL Injection Fundamentals</h2>
+<ol>
+<li>Connect to the database using the MySQL client from the command line. Use the &#39;show databases;&#39; command to list databases in the DBMS. What is the name of the first database? -&gt; employees</li>
+<li>What is the department number for the &#39;Development&#39; department? -&gt; d005</li>
+<li>What is the last name of the employee whose first name starts with &quot;Bar&quot; AND who was hired on 1990-01-01? -&gt; Mitchem</li>
+<li>In the &#39;titles&#39; table, what is the number of records WHERE the employee number is greater than 10000 OR their title does NOT contain &#39;engineer&#39;? -&gt; 654</li>
+<li>Try to log in as the user &#39;tom&#39;. What is the flag value shown after you successfully log in? -&gt; 202a1d1a8b195d5e9a57e434cc16000c</li>
+<li>Login as the user with the id 5 to get the flag. -&gt; cdad9ecdf6f14b45ff5c4de32909caec</li>
+<li>Connect to the above MySQL server with the &#39;mysql&#39; tool, and find the number of records returned when doing a &#39;Union&#39; of all records in the &#39;employees&#39; table and all records in the &#39;departments&#39; table. -&gt; 663</li>
+<li>Use a Union injection to get the result of &#39;user()&#39; -&gt; root@localhost</li>
+<li>What is the password hash for &#39;newuser&#39; stored in the &#39;users&#39; table in the &#39;ilfreight&#39; database? -&gt; 9da2c9bcdf39d8610954e0e11ea8f45f</li>
+<li>We see in the above PHP code that &#39;$conn&#39; is not defined, so it must be imported using the PHP include command. Check the imported page to obtain the database password. -&gt; dB_pAssw0rd_iS_flag!</li>
+<li>Find the flag by using a webshell. -&gt; d2b5b27ae688b6a0f1d21b7d3a0798cd</li>
+<li>Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the / root directory of the file system. Submit the contents of the flag as your answer. -&gt; 528d6d9cedc2c7aab146ef226e918396</li>
+</ol>
+<h2 id="module-sqlmap-essentials">Module: SQLMap Essentials</h2>
+<ol>
+<li>What&#39;s the fastest SQLi type? -&gt; union query-based</li>
+<li>What&#39;s the contents of table flag2? (Case #2) -&gt; HTB{700_much_c0n6r475_0n_p057_r3qu357}</li>
+<li>What&#39;s the contents of table flag3? (Case #3) -&gt; HTB{c00k13_m0n573r_15_7h1nk1n6_0f_6r475}</li>
+<li>What&#39;s the contents of table flag4? (Case #4) -&gt; HTB{j450n_v00rh335_53nd5_6r475}</li>
+<li>What&#39;s the contents of table flag5? (Case #5) -&gt; HTB{700_much_r15k_bu7_w0r7h_17}</li>
+<li>What&#39;s the contents of table flag6? (Case #6) -&gt; HTB{v1nc3_mcm4h0n_15_4570n15h3d}</li>
+<li>What&#39;s the contents of table flag7? (Case #7) -&gt; HTB{un173_7h3_un173d}</li>
+<li>What&#39;s the contents of table flag1 in the testdb database? (Case #1) -&gt; HTB{c0n6r475_y0u_kn0w_h0w_70_run_b451c_5qlm4p_5c4n}</li>
+<li>What&#39;s the name of the column containing &quot;style&quot; in it&#39;s name? (Case #1) -&gt; parameter_style</li>
+<li>What&#39;s the Kimberly user&#39;s password? (Case #1) -&gt; Enizoom1609</li>
+<li>What&#39;s the contents of table flag8? (Case #8) -&gt; HTB{y0u_h4v3_b33n_c5rf_70k3n1z3d}</li>
+<li>What&#39;s the contents of table flag9? (Case #9) -&gt; HTB{700_much_r4nd0mn355_f0r_my_74573}</li>
+<li>What&#39;s the contents of table flag10? (Case #10) -&gt; HTB{y37_4n07h3r_r4nd0m1z3}</li>
+<li>What&#39;s the contents of table flag11? (Case #11) -&gt; HTB{5p3c14l_ch4r5_n0_m0r3}</li>
+<li>Try to use SQLMap to read the file &quot;/var/www/html/flag.txt&quot;. -&gt;HTB{5up3r_u53r5_4r3_p0w3rful!}</li>
+<li>Use SQLMap to get an interactive OS shell on the remote host and try to find another flag within the host. -&gt; HTB{n3v3r_run_db_45_db4}</li>
+<li>What&#39;s the contents of table final_flag? -&gt; HTB{n07_50_h4rd_r16h7?!}</li>
+</ol>
+<h2 id="module-cross-site-scripting-xss-">Module: Cross-Site Scripting (XSS)</h2>
+<ol>
+<li>To get the flag, use the same payload we used above, but change its JavaScript code to show the cookie instead of showing the url. -&gt; HTB{570r3d_f0r_3v3ry0n3_70_533}</li>
+<li>To get the flag, use the same payload we used above, but change its JavaScript code to show the cookie instead of showing the url. -&gt; HTB{r3fl3c73d_b4ck_2_m3}</li>
+<li>To get the flag, use the same payload we used above, but change its JavaScript code to show the cookie instead of showing the url. -&gt; HTB{pur3ly_cl13n7_51d3}</li>
+<li>Utilize some of the techniques mentioned in this section to identify the vulnerable input parameter found in the above server. What is the name of the vulnerable parameter? -&gt; email</li>
+<li>What type of XSS was found on the above server? &quot;name only&quot; -&gt; reflected</li>
+<li>Try to find a working XSS payload for the Image URL form found at &#39;/phishing&#39; in the above server, and then use what you learned in this section to prepare a malicious URL that injects a malicious login form. Then visit &#39;/phishing/send.php&#39; to send the URL to the victim, and they will log into the malicious login form. If you did everything correctly, you should receive the victim&#39;s login credentials, which you can use to login to &#39;/phishing/login.php&#39; and obtain the flag. -&gt; HTB{r3f13c73d_cr3d5_84ck_2_m3}</li>
+<li>Try to repeat what you learned in this section to identify the vulnerable input field and find a working XSS payload, and then use the &#39;Session Hijacking&#39; scripts to grab the Admin&#39;s cookie and use it in &#39;login.php&#39; to get the flag. -&gt; HTB{4lw4y5_53cur3_y0ur_c00k135}</li>
+<li>What is the value of the &#39;flag&#39; cookie? -&gt; HTB{cr055_5173_5cr1p71n6_n1nj4}</li>
+</ol>
+<h2 id="module-file-inclusion">Module: File Inclusion</h2>
+<ol>
+<li>Using the file inclusion find the name of a user on the system that starts with &quot;b&quot;. -&gt; barry</li>
+<li>Submit the contents of the flag.txt file located in the /usr/share/flags directory. -&gt; HTB{n3v3r_tru$t_u$3r_!nput}</li>
+<li>The above web application employs more than one filter to avoid LFI exploitation. Try to bypass these filters to read /flag.txt -&gt; HTB{64$!c_f!lt3r$w0nt$t0p_lf!}</li>
+<li>Fuzz the web application for other php scripts, and then read one of the configuration files and submit the database password as the answer -&gt; HTB{n3v3r_$t0r3_pl4!nt3xt_cr3d$}</li>
+<li>Try to gain RCE using one of the PHP wrappers and read the flag at / -&gt; HTB{d!$46l3_r3m0t3_url_!nclud3}</li>
+<li>Attack the target, gain command execution by exploiting the RFI vulnerability, and then look for the flag under one of the directories in / -&gt; 99a8fc05f033f2fc0cf9a6f9826f83f4</li>
+<li>Use any of the techniques covered in this section to gain RCE and read the flag at / -&gt; HTB{upl04d+lf!+3x3cut3=rc3}</li>
+<li>Use any of the techniques covered in this section to gain RCE, then submit the output of the following command: pwd -&gt; /var/www/html</li>
+<li>Try to use a different technique to gain RCE and read the flag at / -&gt; HTB{1095_5#0u1d_n3v3r_63_3xp053d}</li>
+<li>Fuzz the web application for exposed parameters, then try to exploit it with one of the LFI wordlists to read /flag.txt -&gt; HTB{4u70m47!0n_f!nd5_#!dd3n_93m5}</li>
+<li>What is the full path to the php.ini file for Apache? -&gt; /etc/php/7.4/apache2/php.ini</li>
+<li>Edit the php.ini file to block system(), then try to execute PHP Code that uses system. Read the /var/log/apache2/error.log file and fill in the blank: system() has been disabled for ____ reasons. -&gt; security</li>
+<li>Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the / root directory of the file system. Submit the contents of the flag as your answer. -&gt; a9a892dbc9faf9a014f58e007721835e</li>
+</ol>
+<h2 id="module-file-upload-attacks">Module: File Upload Attacks</h2>
+<ol>
+<li>Try to upload a PHP script that executes the (hostname) command on the back-end server, and submit the first word of it as the answer. -&gt; fileuploadsabsentverification</li>
+<li>Try to exploit the upload feature to upload a web shell and get the content of /flag.txt -&gt; HTB{g07_my_f1r57_w3b_5h3ll}</li>
+<li>Try to bypass the client-side file type validations in the above exercise, then upload a web shell to read /flag.txt (try both bypass methods for better practice) -&gt; HTB{cl13n7_51d3_v4l1d4710n_w0n7_570p_m3}</li>
+<li>Try to find an extension that is not blacklisted and can execute PHP code on the web server, and use it to read &quot;/flag.txt&quot; -&gt; HTB{1_c4n_n3v3r_b3_bl4ckl1573d}</li>
+<li>The above exercise employs a blacklist and a whitelist test to block unwanted extensions and only allow image extensions. Try to bypass both to upload a PHP script and execute code to read &quot;/flag.txt&quot; -&gt; HTB{1_wh173l157_my53lf}</li>
+<li>The above server employs Client-Side, Blacklist, Whitelist, Content-Type, and MIME-Type filters to ensure the uploaded file is an image. Try to combine all of the attacks you learned so far to bypass these filters and upload a PHP file and read the flag at &quot;/flag.txt&quot; -&gt; HTB{m461c4l_c0n73n7_3xpl0174710n}</li>
+<li>The above exercise contains an upload functionality that should be secure against arbitrary file uploads. Try to exploit it using one of the attacks shown in this section to read &quot;/flag.txt&quot; -&gt; HTB{my_1m4635_4r3_l37h4l}</li>
+<li>Try to read the source code of &#39;upload.php&#39; to identify the uploads directory, and use its name as the answer. (write it exactly as found in the source, without quotes) -&gt; ./images/</li>
+<li>Try to exploit the upload form to read the flag found at the root directory &quot;/&quot;. -&gt; HTB{m4573r1ng_upl04d_3xpl0174710n}</li>
+</ol>
+<h2 id="module-command-injections">Module: Command Injections</h2>
+<ol>
+<li>Try adding any of the injection operators after the ip in IP field. What did the error message say (in English)? -&gt; Please match the requested format.</li>
+<li>Review the HTML source code of the page to find where the front-end input validation is happening. On which line number is it? -&gt; 17</li>
+<li>Try using the remaining three injection operators (new-line, &amp;, |), and see how each works and how the output differs. Which of them only shows the output of the injected command? -&gt; |</li>
+<li>Try all other injection operators to see if any of them is not blacklisted. Which of (new-line, &amp;, |) is not blacklisted by the web application? -&gt; new-line</li>
+<li>Use what you learned in this section to execute the command &#39;ls -la&#39;. What is the size of the &#39;index.php&#39; file? -&gt; 1613</li>
+<li>Use what you learned in this section to find name of the user in the &#39;/home&#39; folder. What user did you find? -&gt; 1nj3c70r</li>
+<li>Use what you learned in this section find the content of flag.txt in the home folder of the user you previously found -&gt; HTB{b451c_f1l73r5_w0n7_570p_m3}</li>
+<li>Find the output of the following command using one of the techniques you learned in this section: find /usr/share/ | grep root | grep mysql | tail -n 1 -&gt; /usr/share/mysql/debian_create_root_user.sql</li>
+<li>What is the content of &#39;/flag.txt&#39;? -&gt; HTB{c0mm4nd3r_1nj3c70r} Module: Web Attacks</li>
+<li>Try to use what you learned in this section to access the &#39;reset.php&#39; page and delete all files. Once all files are deleted, you should get the flag. -&gt; HTB{4lw4y5_c0v3r_4ll_v3rb5}</li>
+<li>To get the flag, try to bypass the command injection filter through HTTP Verb Tampering, while using the following filename: file; cp /flag.txt ./ -&gt; HTB{b3_v3rb_c0n51573n7}</li>
+<li>Repeat what you learned in this section to get a list of documents of the first 20 user uid&#39;s in /documents.php, one of which should have a &#39;.txt&#39; file with the flag. -&gt; HTB{4ll_f1l35_4r3_m1n3}</li>
+<li>Try to download the contracts of the first 20 employee, one of which should contain the flag, which you can read with &#39;cat&#39;. You can either calculate the &#39;contract&#39; parameter value, or calculate the &#39;.pdf&#39; file name directly. -&gt; HTB{h45h1n6_1d5_w0n7_570p_m3}</li>
+<li>Try to read the details of the user with &#39;uid=5&#39;. What is their &#39;uuid&#39; value? -&gt; eb4fe264c10eb7a528b047aa983a4829</li>
+<li>Try to change the admin&#39;s email to &#39;flag@idor.htb&#39;, and you should get the flag on the &#39;edit profile&#39; page. -&gt; HTB{1_4m_4n_1d0r_m4573r}</li>
+<li>Try to read the content of the &#39;connection.php&#39; file, and submit the value of the &#39;api_key&#39; as the answer. -&gt; UTM1NjM0MmRzJ2dmcTIzND0wMXJnZXdmc2RmCg</li>
+<li>Use either method from this section to read the flag at &#39;/flag.php&#39;. (You may use the CDATA method at &#39;/index.php&#39;, or the error-based method at &#39;/error&#39;). -&gt; HTB{3rr0r5_c4n_l34k_d474}</li>
+<li>Using Blind Data Exfiltration on the &#39;/blind&#39; page to read the content of &#39;/327a6c4304ad5938eaf0efb6cc3e53dc.php&#39; and get the flag. -&gt; HTB{1_d0n7_n33d_0u7pu7_70_3xf1l7r473_d474}</li>
+<li>Try to escalate your privileges and exploit different vulnerabilities to read the flag at &#39;/flag.php&#39;. -&gt; HTB{m4573r_w3b_4774ck3r}</li>
+</ol>
+<h2 id="module-attacking-common-applications">Module: Attacking Common Applications</h2>
+<ol>
+<li>Use what you&#39;ve learned from this section to generate a report with EyeWitness. What is the name of the .db file EyeWitness creates in the inlanefreight_eyewitness folder? (Format: filename.db) -&gt; ew.db</li>
+<li>What does the header on the title page say when opening the aquatone_report.html page with a web browser? (Format: 3 words, case sensitive) -&gt; Pages by Similarity</li>
+<li>Enumerate the host and find a flag.txt flag in an accessible directory. -&gt; 0ptions_ind3xeS_ftw!</li>
+<li>Perform manual enumeration to discover another installed plugin. Submit the plugin name as the answer (3 words). -&gt; WP sitemap page</li>
+<li>Find the version number of this plugin. (i.e., 4.5.2) -&gt; 1.6.4</li>
+<li>Perform user enumeration against <a href="http://blog.inlanefreight.local">http://blog.inlanefreight.local</a>. Aside from admin, what is the other user present? -&gt; doug</li>
+<li>Perform a login bruteforcing attack against the discovered user. Submit the user&#39;s password as the answer. -&gt; jessica1</li>
+<li>Using the methods shown in this section, find another system user whose login shell is set to /bin/bash. -&gt; webadmin</li>
+<li>Following the steps in this section, obtain code execution on the host and submit the contents of the flag.txt file in the webroot. -&gt; l00k_ma_unAuth_rc3!</li>
+<li>Fingerprint the Joomla version in use on <a href="http://app.inlanefreight.local">http://app.inlanefreight.local</a> (Format: x.x.x) -&gt; 3.10.0</li>
+<li>Find the password for the admin user on <a href="http://app.inlanefreight.local">http://app.inlanefreight.local</a> -&gt; turnkey</li>
+<li>Leverage the directory traversal vulnerability to find a flag in the web root of the <a href="http://dev.inlanefreight.local/">http://dev.inlanefreight.local/</a> Joomla application -&gt; j00mla_c0re_d1rtrav3rsal!</li>
+<li>Identify the Drupal version number in use on <a href="http://drupal-qa.inlanefreight.local">http://drupal-qa.inlanefreight.local</a> -&gt; 7.30</li>
+<li>Work through all of the examples in this section and gain RCE multiple ways via the various Drupal instances on the target host. When you are done, submit the contents of the flag.txt file in the /var/www/drupal.inlanefreight.local directory. -&gt; DrUp@l_drUp@l_3veryWh3Re!</li>
+<li>What version of Tomcat is running on the application located at <a href="http://web01.inlanefreight.local:8180?">http://web01.inlanefreight.local:8180?</a> -&gt; 10.0.10</li>
+<li>What role does the admin user have in the configuration example? -&gt; admin-gui</li>
+<li>Perform a login bruteforcing attack against Tomcat manager at <a href="http://web01.inlanefreight.local:8180">http://web01.inlanefreight.local:8180</a>. What is the valid username? -&gt; tomcat</li>
+<li>What is the password -&gt; root</li>
+<li>Obtain remote code execution on the <a href="http://web01.inlanefreight.local:8180">http://web01.inlanefreight.local:8180</a> Tomcat instance. Find and submit the contents of tomcat_flag.txt -&gt; t0mcat_rc3_ftw!</li>
+<li>Log in to the Jenkins instance at <a href="http://jenkins.inlanefreight.local:8000">http://jenkins.inlanefreight.local:8000</a>. Browse around and submit the version number when you are ready to move on. -&gt; 2.303.1</li>
+<li>Attack the Jenkins target and gain remote code execution. Submit the contents of the flag.txt file in the /var/lib/jenkins3 directory -&gt; f33ling_gr00000vy!</li>
+<li>Enumerate the Splunk instance as an unauthenticated user. Submit the version number to move on (format 1.2.3). -&gt; 8.2.2</li>
+<li>Attack the Splunk target and gain remote code execution. Submit the contents of the flag.txt file in the c:\loot directory. -&gt; l00k_ma_no_AutH!</li>
+<li>What version of PRTG is running on the target? -&gt; 18.1.37.13946</li>
+<li>Attack the PRTG target and gain remote code execution. Submit the contents of the flag.txt file on the administrator Desktop. -&gt; WhOs3_m0nit0ring_wH0?</li>
+<li>Find your way into the osTicket instance and submit the password sent from the Customer Support Agent to the customer Charles Smithson. -&gt; Inlane_welcome!</li>
+<li>Enumerate the GitLab instance at <a href="http://gitlab.inlanefreight.local">http://gitlab.inlanefreight.local</a>. What is the version number? -&gt; 13.10.2</li>
+<li>Find the PostgreSQL database password in the example project. -&gt; postgres</li>
+<li>Find another valid user on the target GitLab instance. -&gt; DEMO</li>
+<li>Gain remote code execution on the GitLab instance. Submit the flag in the directory you land in. -&gt; s3cure_y0ur_Rep0s!</li>
+<li>After running the URL Encoded &#39;whoami&#39; payload, what user is tomcat running as? -&gt; feldspar\omen</li>
+<li>Enumerate the host, exploit the Shellshock vulnerability, and submit the contents of the flag.txt file located on the server -&gt; Sh3ll_Sh0cK_123</li>
+<li>Perform an analysis of C:\Apps\Restart-OracleService.exe and identify the credentials hidden within its source code. Submit the answer using the format username:password. -&gt; svc_oracle:#oracle_s3rV1c3!2010</li>
+<li>What is the IP address of the eth0 interface under the ServerStatus -&gt; Ipconfig tab in the fatty-client application? -&gt; 172.28.0.3</li>
+<li>What ColdFusion protocol runs on port 5500? -&gt; server monitor</li>
+<li>What user is ColdFusion running as? -&gt; arctic\tolis</li>
+<li>What is the full .aspx filename that Gobuster identified? -&gt; transfer.aspx</li>
+<li>After bypassing the login, what is the website &quot;Powered by&quot;? -&gt; w3.css</li>
+<li>We placed the source code of the application we just covered at /opt/asset-manager/app.py inside this exercise&#39;s target, but we changed the crucial parameter&#39;s name. SSH into the target, view the source code and enter the parameter name that needs to be manipulated to log in to the Asset Manager web application. -&gt; active</li>
+<li>What credentials were found for the local database instance while debugging the octopus_checker binary? -&gt; SA:N0tS3cr3t!</li>
+<li>Enumerate the target host and identify the running application. What application is running? -&gt; weblogic</li>
+<li>Enumerate the application for vulnerabilities. Gain remote code execution and submit the contents of the flag.txt file on the administrator desktop. -&gt; w3b_l0gic_RCE!</li>
+<li>What vulnerable application is running? -&gt; tomcat</li>
+<li>What port is this application running on? -&gt; 8080</li>
+<li>What version of the application is in use? -&gt; 9.0.0.M1</li>
+<li>Exploit the application to obtain a shell and submit the contents of the flag.txt file on the Administrator desktop. -&gt; f55763d31a8f63ec935abd07aee5d3d0</li>
+<li>What is the URL of the WordPress instance? -&gt; <a href="http://blog.inlanefreight.local">http://blog.inlanefreight.local</a></li>
+<li>What is the name of the public GitLab project? -&gt; virtualhost</li>
+<li>What is the FQDN of the third vhost? -&gt; monitoring.inlanefreight.local</li>
+<li>What application is running on this third vhost? (One word) -&gt; nagios</li>
+<li>What is the admin password to access this application? -&gt; oilaKglm7M09@CPL&amp;^lC</li>
+<li>Obtain reverse shell access on the target and submit the contents of the flag.txt file. -&gt; afe377683dce373ec2bf7eaf1e0107eb</li>
+<li>What is the hardcoded password for the database connection in the MultimasterAPI.dll file? -&gt; D3veL0pM3nT!</li>
+</ol>
+<h2 id="module-linux-privilege-escalation">Module: Linux Privilege Escalation</h2>
+<ol>
+<li>Enumerate the Linux environment and look for interesting files that might contain sensitive data. Submit the flag as the answer -&gt; HTB{1nt3rn4l_5cr1p7_l34k}</li>
+<li>What is the latest Python version that is installed on the target? -&gt; 3.11</li>
+<li>Find the WordPress database password. -&gt; W0rdpr3ss_sekur1ty!</li>
+<li>Review the PATH of the htb-student user. What non-default directory is part of the user&#39;s PATH? -&gt; /tmp</li>
+<li>Use different approaches to escape the restricted shell and read the flag.txt file. Submit the contents as the answer. -&gt; HTB{35c4p3_7h3_r3stricted_5h311}</li>
+<li>Find a file with the setuid bit set that was not shown in the section command output (full path to the binary). -&gt; /bin/sed</li>
+<li>Find a file with the setgid bit set that was not shown in the section command output (full path to the binary). -&gt; /usr/bin/facter</li>
+<li>What command can the htb-student user run as root? -&gt; /usr/bin/openssl</li>
+<li>Use the privileged group rights of the secaudit user to locate a flag. -&gt; ch3ck_th0se_gr0uP_m3mb3erSh1Ps!</li>
+<li>Escalate the privileges using capabilities and read the flag.txt file in the &quot;/root&quot; directory. Submit its contents as the answer. -&gt; HTB{c4paBili7i3s_pR1v35c}</li>
+<li>Connect to the target system and escalate privileges using the Screen exploit. Submit the contents of the flag.txt file in the /root/screen_exploit directory. -&gt; 91927dad55ffd22825660da88f2f92e0</li>
+<li>Connect to the target system and escalate privileges by abusing the misconfigured cron job. Submit the contents of the flag.txt file in the /root/cron_abuse directory. -&gt; 14347a2c977eb84508d3d50691a7ac4b</li>
+<li>Escalate the privileges and submit the contents of flag.txt as the answer. -&gt; HTB{C0nT41n3rs_uhhh}</li>
+<li>Escalate the privileges on the target and obtain the flag.txt in the root directory. Submit the contents as the answer. -&gt; HTB{D0ck3r_Pr1vE5c}</li>
+<li>Escalate the privileges and submit the contents of flag.txt as the answer. -&gt; HTB{l0G_r0t7t73N_00ps}</li>
+<li>Review the NFS server&#39;s export list and find a directory holding a flag. -&gt; fc8c065b9384beaa162afe436a694acf</li>
+<li>Escalate privileges using a different Kernel exploit. Submit the contents of the flag.txt file in the /root/kernel_exploit directory. -&gt; 46237b8aa523bc7e0365de09c0c0164f</li>
+<li>Escalate privileges using LD_PRELOAD technique. Submit the contents of the flag.txt file in the /root/ld_preload directory. -&gt; 6a9c151a599135618b8f09adc78ab5f1</li>
+<li>Follow the examples in this section to escalate privileges, recreate all examples (don&#39;t just run the payroll binary). Practice using ldd and readelf. Submit the version of glibc (i.e. 2.30) in use to move on to the next section. -&gt; 2.27</li>
+<li>Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer. -&gt; HTB{3xpl0i7iNG_Py7h0n_lI8R4ry_HIjiNX}</li>
+<li>Escalate the privileges and submit the contents of flag.txt as the answer. -&gt; HTB{SuD0_e5c4l47i0n_1id}</li>
+<li>Escalate the privileges and submit the contents of flag.txt as the answer. -&gt; HTB{p0Lk1tt3n}</li>
+<li>Escalate the privileges and submit the contents of flag.txt as the answer. -&gt; HTB{D1rTy_DiR7Y}</li>
+<li>Submit the contents of flag1.txt -&gt; LLPE{d0n_ov3rl00k_h1dden_f1les!}</li>
+<li>Submit the contents of flag2.txt -&gt; LLPE{ch3ck_th0se_cmd_l1nes!}</li>
+<li>Submit the contents of flag3.txt -&gt; LLPE{h3y_l00k_a_fl@g!}</li>
+<li>Submit the contents of flag4.txt -&gt; LLPE{im_th3_m@nag3r_n0w}</li>
+<li>Submit the contents of flag5.txt -&gt; LLPE{0ne_sudo3r_t0_ru13_th3m_@ll!}</li>
+</ol>
+<h2 id="module-windows-privilege-escalation">Module: Windows Privilege Escalation</h2>
+<ol>
+<li>What is the IP address of the other NIC attached to the target host? -&gt; 172.16.20.45</li>
+<li>What executable other than cmd.exe is blocked by AppLocker? -&gt; powershell_ise.exe</li>
+<li>What non-default privilege does the htb-student user have? -&gt; SeTakeOwnershipPrivilege</li>
+<li>Who is a member of the Backup Operators group? -&gt; sarah</li>
+<li>What service is listening on port 8080 (service name not the executable)? -&gt; Tomcat8</li>
+<li>What user is logged in to the target host? -&gt; sccm_svc</li>
+<li>What type of session does this user have? -&gt; console</li>
+<li>What service is listening on 0.0.0.0:21? (two words) -&gt; filezilla server</li>
+<li>Which account has WRITE_DAC privileges over the \pipe\SQLLocal\SQLEXPRESS01 named pipe? -&gt; NT SERVICE\MSSQL$SQLEXPRESS01</li>
+<li>Escalate privileges using one of the methods shown in this section. Submit the contents of the flag file located at c:\Users\Administrator\Desktop\SeImpersonate\flag.txt -&gt; F3ar_th3_p0tato!</li>
+<li>Leverage SeDebugPrivilege rights and obtain the NTLM password hash for the sccm_svc account. -&gt; 64f12cddaa88057e06a81b54e73b949b</li>
+<li>Leverage SeTakeOwnershipPrivilege rights over the file located at &quot;C:\TakeOwn\flag.txt&quot; and submit the contents. -&gt; 1m_th3_f1l3_0wn3r_n0W!</li>
+<li>Leverage SeBackupPrivilege rights and obtain the flag located at c:\Users\Administrator\Desktop\SeBackupPrivilege\flag.txt -&gt; Car3ful_w1th_gr0up_m3mberSh1p!</li>
+<li>Using the methods demonstrated in this section find the password for the user mary. -&gt; W1ntergreen_gum_2021!</li>
+<li>Leverage membership in the DnsAdmins group to escalate privileges. Submit the contents of the flag located at c:\Users\Administrator\Desktop\DnsAdmins\flag.txt -&gt; Dll_abus3_ftw!</li>
+<li>Follow the steps in this section to escalate privileges to SYSTEM, and submit the contents of the flag.txt file on administrator&#39;s Desktop. Necessary tools for both methods can be found in the C:\Tools directory, or you can practice compiling and uploading them on your own. -&gt; Pr1nt_0p3rat0rs_ftw!</li>
+<li>Escalate privileges using the methods shown in this section and submit the contents of the flag located at c:\Users\Administrator\Desktop\ServerOperators\flag.txt -&gt; S3rver_0perators_@ll_p0werfull!</li>
+<li>Follow the steps in this section to obtain a reverse shell connection with normal user privileges and another which bypasses UAC. Submit the contents of flag.txt on the sarah user&#39;s Desktop when finished. -&gt; I_bypass3d_Uac!</li>
+<li>Escalate privileges on the target host using the techniques demonstrated in this section. Submit the contents of the flag in the WeakPerms folder on the Administrator Desktop. -&gt; Aud1t_th0se_s3rv1ce_p3rms!</li>
+<li>Try out the 3 examples in this section to escalate privileges to NT AUTHORITY\SYSTEM on the target host. Submit the contents of the flag on the Administrator Desktop. -&gt; D0nt_fall_b3h1nd_0n_Patch1ng!</li>
+<li>Work through the steps above to escalate privileges on the target system using the Druva inSync flaw. Submit the contents of the flag in the VulServices folder on the Administrator Desktop. -&gt; Aud1t_th0se_th1rd_paRty_s3rvices!</li>
+<li>Search the file system for a file containing a password. Submit the password as your answer. -&gt; Pr0xyadm1nPassw0rd!</li>
+<li>Connect as the bob user and practice decrypting the credentials in the pass.xml file. Submit the contents of the flag.txt on the desktop once you are done. -&gt; 3ncryt10n_w0nt_4llw@ys_s@v3_y0u</li>
+<li>Using the techniques shown in this section, find the cleartext password for the bob_adm user on the target system. -&gt; 1qazXSW@3edc!</li>
+<li>Using the techniques covered in this section, retrieve the sa password for the SQL01.inlanefreight.local user account. -&gt; S3cret_db_p@ssw0rd!</li>
+<li>Which user has credentials stored for RDP access to the WEB01 host? -&gt; amanda</li>
+<li>Find and submit the password for the root user to access <a href="https://vc01.inlanefreight.local/ui/login">https://vc01.inlanefreight.local/ui/login</a> -&gt; ILVCadm1n1qazZAQ!</li>
+<li>Enumerate the host and find the password for ftp.ilfreight.local -&gt; Ftpuser!</li>
+<li>Submit the user flag from C:\Users\pmorgan\Downloads -&gt; CitR1X_Us3R_Esc@p3</li>
+<li>Submit the Administrator&#39;s flag from C:\Users\Administrator\Desktop -&gt; C1tr!x_3sC@p3_@dm!n</li>
+<li>Using the techniques in this section obtain the cleartext credentials for the SCCM_SVC user. -&gt; Password1</li>
+<li>Access the target machine using Peter&#39;s credentials and check which applications are installed. What&#39;s the application installed used to manage and connect to remote systems? -&gt; mRemoteNG</li>
+<li>Find the configuration file for the application you identify and attempt to obtain the credentials for the user Grace. What is the password for the local account, Grace? -&gt; Princess01!</li>
+<li>Log in as Grace and find the cookies for the slacktestapp.com website. Use the cookie to log in into slacktestapp.com from a browser within the RDP session and submit the flag. -&gt; HTB{Stealing_Cookies_To_AccessWebSites}</li>
+<li>Log in as Jeff via RDP and find the password for the restic backups. Submit the password as the answer. -&gt; Superbackup!</li>
+<li>Restore the directory containing the files needed to obtain the password hashes for local users. Submit the Administrator hash as the answer. -&gt; bac9dc5b7b4bec1d83e0e9c04b477f26</li>
+<li>Using the techniques in this section, find the cleartext password for an account on the target host. -&gt; !QAZXSW@3edc</li>
+<li>Obtain a shell on the target host, enumerate the system and escalate privileges. Submit the contents of the flag.txt file on the Administrator Desktop. -&gt; L3gacy_st1ill_pr3valent!</li>
+<li>Enumerate the target host and escalate privileges to SYSTEM. Submit the contents of the flag on the Administrator Desktop. -&gt; Cm0n_l3ts_upgRade_t0_win10!</li>
+<li>Which two KBs are installed on the target system? (Answer format: 3210000&amp;3210060) -&gt; 3199986&amp;3200970</li>
+<li>Find the password for the ldapadmin account somewhere on the system. -&gt; car3ful_st0rinG_cr3d$</li>
+<li>Escalate privileges and submit the contents of the flag.txt file on the Administrator Desktop. -&gt; Ev3ry_sysadm1ns_n1ghtMare!</li>
+<li>After escalating privileges, locate a file named confidential.txt. Submit the contents of this file. -&gt; 5e5a7dafa79d923de3340e146318c31a</li>
+<li>Find left behind cleartext credentials for the iamtheadministrator domain admin account. -&gt; Inl@n3fr3ight_sup3rAdm1n!</li>
+<li>Escalate privileges to SYSTEM and submit the contents of the flag.txt file on the Administrator Desktop -&gt; el3vatEd_1nstall$_v3ry_r1sky</li>
+<li>There is 1 disabled local admin user on this system with a weak password that may be used to access other systems in the network and is worth reporting to the client. After escalating privileges retrieve the NTLM hash for this user and crack it offline. Submit the cleartext password for this account. -&gt; password1</li>
+</ol>
+<h2 id="module-documenting-and-reporting">Module: Documenting and Reporting</h2>
+<ol>
+<li>Inlanefreight has contracted Elizabeth&#39;s firm to complete a type of assessment that is mostly automated where no exploitation is attempted. What kind of assessment is she going to be contracted for? -&gt; Vulnerability Assessment</li>
+<li>Nicolas is performing an external &amp; internal penetration test for Inlanefreight. The client has only provided the company&#39;s name and a network connection onsite at their office and no additional detail. From what perspective is he performing the penetration test? -&gt; Black Box</li>
+<li>What component of a report should be written in a simple to understand and non-technical manner? -&gt; Executive Summary</li>
+<li>It is a good practice to name and recommend specific vendors in the component of the report mentioned in the last question. True or False? -&gt; FALSE</li>
+<li>&quot;An attacker can own your whole entire network cause your DC is way out of date. You should really fix that!&quot;. Is this a Good or Bad remediation recommendation? (Answer Format: Good or Bad) -&gt; bad</li>
+<li>Connect to the testing VM using Xfreerdp and practice testing, documentation, and reporting against the target lab. Once the target spawns, browse to the WriteHat instance on port 443 and authenticate with the provided admin credentials. Play around with the tool and practice adding findings to the database to get a feel for the reporting tools available to us. Remember that all data will be lost once the target resets, so save any practice findings locally! Next, complete the in-progress penetration test. Once you achieve Domain Admin level access, submit the contents of the flag.txt file on the Administrator Desktop on the DC01 host. -&gt; d0c_pwN_r3p0rt_reP3at!</li>
+<li>After achieving Domain Admin, submit the NTLM hash of the KRBTGT account. -&gt; 16e26ba33e455a8c338142af8d89ffbc</li>
+<li>Dump the NTDS file and perform offline password cracking. Submit the password of the svc_reporting user as your answer. -&gt; Reporter1!</li>
+<li>What powerful local group does this user belong to? -&gt; backup operators Module: Attacking Enterprise Networks</li>
+<li>Perform a banner grab of the services listening on the target host and find a non-standard service banner. Submit the name as your answer (format: word_word_word) -&gt; 1337_HTB_DNS</li>
+<li>Perform a DNS Zone Transfer against the target and find a flag. Submit the flag value as your answer (flag format: HTB{ }). -&gt; HTB{DNs_ZOn3_Tr@nsf3r}</li>
+<li>What is the FQDN of the associated subdomain? -&gt; flag.inlanefreight.local</li>
+<li>Perform vhost discovery. What additional vhost exists? (one word) -&gt; monitoring</li>
+<li>Enumerate the accessible services and find a flag. Submit the flag value as your answer (flag format: HTB{ }). -&gt; HTB{0eb0ab788df18c3115ac43b1c06ae6c4}</li>
+<li>Use the IDOR vulnerability to find a flag. Submit the flag value as your answer (flag format: HTB{}). -&gt; HTB{8f40ecf17f681612246fa5728c159e46}</li>
+<li>Exploit the HTTP verb tampering vulnerability to find a flag. Submit the flag value as your answer (flag format: HTB{}). -&gt; HTB{57c7f6d939eeda90aa1488b15617b9fa}</li>
+<li>Exploit the WordPress instance and find a flag in the web root. Submit the flag value as your answer (flag format: HTB{}). -&gt; HTB{e7134abea7438e937b87608eab0d979c}</li>
+<li>Enumerate the &quot;status&quot; database and retrieve the password for the &quot;Flag&quot; user. Submit the value as your answer. -&gt; 1fbea4df249ac4f4881a5da387eb297cf</li>
+<li>Steal an admin&#39;s session cookie and gain access to the support ticketing queue. Submit the flag value for the &quot;John&quot; user as your answer. -&gt; HTB{1nS3cuR3_c00k135}</li>
+<li>Use the SSRF to Local File Read vulnerability to find a flag. Submit the flag value as your answer (flag format: HTB{}). -&gt; HTB{49f0bad299687c62334182178bfd75d8}</li>
+<li>Register an account and log in to the Gitlab instance. Submit the flag value (flag format : HTB{}). -&gt; HTB{32596e8376077c3ef8d5cf52f15279ba}</li>
+<li>Use the XXE vulnerability to find a flag. Submit the flag value as your answer (flag format: HTB{}). -&gt; HTB{dbca4dc5d99cdb3311404ea74921553c}</li>
+<li>Use the command injection vulnerability to find a flag in the web root. Submit the flag value as your answer (flag format: HTB{}) -&gt; HTB{bdd8a93aff53fd63a0a14de4eba4cbc1}</li>
+<li>Submit the contents of the flag.txt file in the /home/srvadm directory. -&gt; b447c27a00e3a348881b0030177000cd</li>
+<li>Escalate privileges on the target host and submit the contents of the flag.txt file in the /root directory. -&gt; a34985b5976072c3c148abc751671302</li>
+<li>Mount an NFS share and find a flag.txt file. Submit the contents as your answer. -&gt; bf22a1d0acfca4af517e1417a80e92d1</li>
+<li>Retrieve the contents of the SAM database on the DEV01 host. Submit the NT hash of the administrator user as your answer. -&gt; 0e20798f695ab0d04bc138b22344cea8</li>
+<li>Escalate privileges on the DEV01 host. Submit the contents of the flag.txt file on the Administrator Desktop. -&gt; K33p_0n_sp00fing!</li>
+<li>Find a backup script that contains the password for the backupadm user. Submit this user&#39;s password as your answer. -&gt; !qazXSW@</li>
+<li>Perform a Kerberoasting attack and retrieve TGS tickets for all accounts set as SPNs. Crack the TGS of the backupjob user and submit the cleartext password as your answer. -&gt; lucky7</li>
+<li>Escalate privileges on the MS01 host and submit the contents of the flag.txt file on the Administrator Desktop. -&gt; 33a9d46de4015e7b3b0ad592a9394720</li>
+<li>Obtain the NTLMv2 password hash for the mpalledorous user and crack it to reveal the cleartext value. Submit the user&#39;s password as your answer. -&gt; 1squints2</li>
+<li>Set a fake SPN on the ttimmons user. Kerberoast this user and crack the TGS ticket offline to reveal their cleartext password. Submit this password as your answer. -&gt; Repeat09</li>
+<li>After obtaining Domain Admin rights, authenticate to the domain controller and submit the contents of the flag.txt file on the Administrator Desktop. -&gt; 7c09eb1fff981654a3bb3b4a4e0d176a</li>
+<li>Compromise the INLANEFREIGHT.LOCAL domain and dump the NTDS database. Submit the NT hash of the Administrator account as your answer. -&gt; fd1f7e5564060258ea787ddbb6e6afa2</li>
+<li>Gain access to the MGMT01 host and submit the contents of the flag.txt file in a user&#39;s home directory. -&gt; 3c4996521690cc76446894da2bf7dd8f</li>
+<li>Escalate privileges to root on the MGMT01 host. Submit the contents of the flag.txt file in the /root directory. -&gt; 206c03861986c0e264438cb6e8e90a19</li>
+</ol>
