@@ -1,277 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Training Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0A0A0A;
+            --card-color: rgba(26, 26, 26, 0.5);
+            --accent-color: #C6F432;
+            --accent-color-dark: #677a1a;
+            --text-primary: #F5F5F5;
+            --text-secondary: #A0A0A0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-hover-color: #C6F432;
+        }
 
-  <meta charset="UTF-8" />
-  <title>Cybersecurity Training Hub</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      scroll-behavior: smooth;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    .top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #2d2d2d;
-      padding: 0.6rem 1rem;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
+        #matrix-bg { position: fixed; top: 0; left: 0; z-index: -2; pointer-events: none; }
+        .background-gradient { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .gradient-shape { position: absolute; border-radius: 50%; filter: blur(150px); opacity: 0.3; }
+        .shape1 { width: 500px; height: 500px; background-color: var(--accent-color); top: -10%; left: -10%; animation: moveShape1 25s infinite; }
+        .shape2 { width: 400px; height: 400px; background-color: var(--accent-color-dark); bottom: -5%; right: -15%; animation: moveShape2 30s infinite; }
+        .shape3 { width: 300px; height: 300px; background-color: var(--accent-color); bottom: 25%; left: 10%; animation: moveShape3 20s infinite; }
 
-    .top-bar a {
-      color: #61dafb;
-      font-size: 0.9rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
+        @keyframes moveShape1 { 0%{transform:translate(0,0)} 25%{transform:translate(20vw,15vh)} 50%{transform:translate(-10vw,30vh)} 75%{transform:translate(10vw,-10vh)} 100%{transform:translate(0,0)} }
+        @keyframes moveShape2 { 0%{transform:translate(0,0) rotate(0deg)} 50%{transform:translate(-30vw,-40vh) rotate(180deg)} 100%{transform:translate(0,0) rotate(360deg)} }
+        @keyframes moveShape3 { 0%{transform:translate(0,0)} 33%{transform:translate(-15vw,10vh)} 66%{transform:translate(10vw,-20vh)} 100%{transform:translate(0,0)} }
+        
+        .container { width: 100%; max-width: 960px; z-index: 1; padding-top: 80px; }
+        .glass { backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid var(--border-color); }
 
-    .container {
-      padding-top: 4rem;
-    }
+        .top-bar { position: fixed; top: 0; left: 0; width: 100%; background: var(--card-color); padding: 1rem 2rem; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border-bottom: 1px solid var(--border-color); text-align: center; }
+        .top-bar a { color: var(--accent-color); font-size: 0.9rem; font-weight: bold; text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--text-primary); }
 
-    h1, h2 {
-      text-align: left;
-      margin-bottom: 1rem;
-    }
+        .intro-text { text-align: center; max-width: 700px; margin: 0 auto 20px auto; }
+        .intro-text h1 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+        .intro-text p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+        
+        .filter-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+        .filter-btn { background-color: rgba(255, 255, 255, 0.05); color: var(--text-secondary); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
+        .filter-btn:hover { background-color: rgba(198, 244, 50, 0.1); color: var(--text-primary); border-color: var(--accent-color); }
+        .filter-btn.active { background-color: var(--accent-color); color: var(--bg-color); border-color: var(--accent-color); font-weight: 700; box-shadow: 0 0 15px rgba(198, 244, 50, 0.2); }
 
-    .section-banner {
-      background: linear-gradient(to right, #2d2d2d, #1a1a1a);
-      padding: 2rem;
-      margin: 2rem 0 1rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-    }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; min-height: 500px; }
+        
+        a.card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        a.card-link:hover {
+            transform: scale(1.03);
+        }
 
-    .section-banner h2 {
-      margin: 0;
-      font-size: 2rem;
-    }
+        .module-card { 
+            background: linear-gradient(135deg, rgba(35,45,30,0.4) 0%, rgba(25,25,25,0.6) 100%); 
+            padding: 1rem; 
+            border-radius: 16px; 
+            text-align: left; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        a.card-link:hover .module-card {
+            background: linear-gradient(135deg, rgba(198,244,50,0.15) 0%, rgba(25,25,25,0.5) 100%);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 25px rgba(198,244,50,0.1);
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.2rem;
-    }
+        .module-card.hidden { display: none; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .module-card {
-      background: #2d2d2d;
-      padding: 1rem;
-      border-radius: 10px;
-      text-align: left;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+        .module-card img { 
+            width: 100%; 
+            border-radius: 8px; 
+            margin-bottom: 1rem; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 0 10px rgba(198,244,50,0.1); 
+            transition: all 0.3s ease; 
+        }
 
-    .module-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    }
+        a.card-link:hover .module-card img {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3), 0 0 15px rgba(198,244,50,0.3);
+            filter: brightness(0.7);
+        }
 
-    .module-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 0.7rem;
-    }
+        .module-card p { 
+            color: var(--text-primary); 
+            font-weight: 600; 
+            font-size: 1rem; 
+            margin-top: 0.2rem; 
+            transition: color 0.3s ease; 
+        }
 
-    .module-card a {
-      color: #61dafb;
-      font-weight: bold;
-      font-size: 1rem;
-      display: block;
-      margin-top: 0.2rem;
-    }
-  </style>
+        a.card-link:hover .module-card p {
+            color: var(--accent-color);
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translate(50px, -50px);
+            opacity: 0;
+        }
+
+        a.card-link:hover .card-icon {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        
+        .pagination-container { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 40px; }
+        .pagination-btn { background-color: rgba(255,255,255,0.05); color: var(--text-primary); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; }
+        .pagination-btn:hover:not(:disabled) { background-color: var(--accent-color); color: var(--bg-color); border-color: var(--accent-color); }
+        .pagination-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        #page-info { font-weight: 500; color: var(--text-secondary); }
+
+        footer { text-align: center; margin-top: 60px; color: var(--text-secondary); font-size: 14px; opacity: 0.7; padding-bottom: 20px; }
+        footer .fa-heart { color: #e25555; margin: 0 4px; font-size: 12px; animation: pulse 1.5s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+        
+        @media (max-width: 480px) {
+            .container { padding-top: 70px; }
+            .gradient-shape { filter: blur(120px); opacity: 0.2; }
+            .grid { grid-template-columns: 1fr; min-height: 300px; }
+            .filter-container { gap: 8px; }
+            .filter-btn { padding: 8px 12px; font-size: 14px; }
+        }
+    </style>
 </head>
 <body>
-  <!-- Sticky Contact Bar -->
-<div class="top-bar">
-  
-  &nbsp;|&nbsp;
-  <a href="lib.html">📖 Cybersecurity Library</a>
-  &nbsp;|&nbsp;
- 
-</div>
+    <canvas id="matrix-bg"></canvas>
+    <div class="background-gradient"> <div class="gradient-shape shape1"></div> <div class="gradient-shape shape2"></div> <div class="gradient-shape shape3"></div> </div>
+    <div class="top-bar glass"> <a href="lib.html">📖 Cybersecurity Library</a> </div>
 
+    <div class="container">
+        <div class="intro-text">
+            <h1>H*ckTheBox Modules</h1>
+            <p>I made this website for those who just wants to read the content of HackTheBox Academy without the need to buy the subscriptions for the certs, and just want to have general overview of there paid content, which just offers the experience without the badge of that you finished it.</p>
+        </div>
 
-  <div class="container">
-    <h1> H*ckTheBox Modules</h1>
-    <p>I made this website for those who just wants to read the content of HackTheBox Academy without the need to buy the subscriptions for the certs, and just want to have general overview of there paid content, which just offers the experience without the badge of that you finished it.</p>
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">All Modules</button>
+            <button class="filter-btn" data-category="fundamentals">Fundamentals</button>
+            <button class="filter-btn" data-category="pentesting">Penetration Testing</button>
+            <button class="filter-btn" data-category="bugbounty">Bug Bounty</button>
+            <button class="filter-btn" data-category="defensive">Defensive Security</button>
+            <button class="filter-btn" data-category="ai">AI</button>
+        </div>
 
+        <div class="grid">
+            </div>
 
-<div id="fundemantal-modules">
-  <div class="section-banner"><h2>📚 Fundamentals Modules</h2></div>
-  <div class="grid">
-
-    <!-- 1. System Setup & Essentials -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/87/logo.png"><a href="modules/setting-up.html">Setting Up Your Environment</a></div>
-
-    <!-- 2. Programming Basics -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/88/logo.png"><a href="modules/introduction-to-python-3.html">Introduction to Python 3</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/228/logo.png?t=1708011830"><a href="modules/introduction-to-c.html">Introduction to C#</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/289/logo.png"><a href="modules/network-foundations.html">Network Foundations</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/280/logo.png"><a href="modules/web-fuzzing.html">Web Fuzzing</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/85/logo.png"><a href="modules/intro-to-assembly-language.html">Introduction to Assembly</a></div>
-
-    <!-- 3. Operating Systems -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/18/logo.png"><a href="modules/linux-fundamentals.html">Linux Fundamentals</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/157/logo.png"><a href="modules/macos-fundamentals.html">macOS Fundamentals</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/49/logo.png"><a href="modules/introduction-to-windows-command-line.html">Windows Command Line</a></div>
-
-    <!-- 4. Scripting & Automation -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/21/logo.png"><a href="modules/introduction-to-bash-scripting.html">Introduction to Bash Scripting</a></div>
-
-    <!-- 5. Security Foundations -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/74/logo.png"><a href="modules/introduction-to-active-directory.html">Introduction to Active Directory</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/27/logo.png"><a href="modules/dns-enumeration-using-python.html">DNS Enumeration (Python)</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/230/logo.png"><a href="modules/brief-intro-to-hardware-attacks.html">Intro to Hardware Attacks</a></div>
-
-    <!-- 6. Exploitation Basics -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/89/logo.png"><a href="modules/stack-based-buffer-overflows-on-windows-x86.html">Windows Stack Buffer Overflows</a></div>
-
-    <!-- 7. Extra Essentials -->
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/195/logo.png"><a href="modules/android-fundamentals.html">Android Fundamentals</a></div>
-        <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/257/logo.png"><a href="modules/intro-to-academys-purple-modules.html">intro to academys Purple Modules</a></div>
-
-  </div>
-</div>
-
-
-<div id="penetration-testing-specialist-path">
-  <div class="section-banner"><h2>🗡️ Penetration Testing</h2></div>
-  <div class="grid">
-
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/19/logo.png"><a href="modules/network-enumeration-with-nmap.html">Network Enumeration with Nmap</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/112/logo.png"><a href="modules/footprinting.html">Footprinting</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/144/logo.png"><a href="modules/information-gathering-web-edition.html">Information Gathering — Web Edition</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/108/logo.png"><a href="modules/vulnerability-assessment.html">Vulnerability Assessment</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/24/logo.png"><a href="modules/file-transfers.html">File Transfers</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/115/logo.png"><a href="modules/shells-and-payloads.html">Shells & Payloads</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/39/logo.png"><a href="modules/using-the-metasploit-framework.html">Using the Metasploit Framework</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/147/logo.png"><a href="modules/password-attacks.html">Password Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/113/logo.png"><a href="modules/attacking-common-services.html">Attacking Common Services</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/158/logo.png"><a href="modules/pivoting-tunneling-and-port-forwarding.html">Pivoting, Tunneling, and Port Forwarding</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/143/logo.png"><a href="modules/active-directory-enumeration-and-attacks.html">Active Directory Enumeration & Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/110/logo.png"><a href="modules/using-web-proxies.html">Using Web Proxies</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/54/logo.png"><a href="modules/attacking-web-applications-with-ffuf.html">Attacking Web Applications with FFUF</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/57/logo.png"><a href="modules/login-brute-forcing.html">Login Brute Forcing</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/33/logo.png"><a href="modules/sql-injection-fundamentals.html">SQL Injection Fundamentals</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/58/logo.png"><a href="modules/sqlmap-essentials.html">SQLMap Essentials</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/103/logo.png"><a href="modules/cross-site-scripting-xss.html">Cross-Site Scripting (XSS)</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/23/logo.png"><a href="modules/file-inclusion.html">File Inclusion</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/136/logo.png"><a href="modules/file-upload-attacks.html">File Upload Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/109/logo.png"><a href="modules/command-injections.html">Command Injections</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/134/logo.png"><a href="modules/web-attacks.html">Web Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/113/logo.png?t=1746253351"><a href="modules/attacking-common-applications.html">Attacking Common Applications</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/222/logo.png"><a href="modules/wi-fi-penetration-testing-basics.html">Wi-Fi Penetration Testing Basics</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/186/logo.png"><a href="modules/attacking-wi-fi-protected-setup-wps.html">Attacking Wi-Fi Protected Setup (WPS)</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/185/logo.png"><a href="modules/wired-equivalent-privacy-wep-attacks.html">Wired Equivalent Privacy (WEP) Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/51/logo.png"><a href="modules/linux-privilege-escalation.html">Linux Privilege Escalation</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/67/logo.png"><a href="modules/windows-privilege-escalation.html">Windows Privilege Escalation</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/162/logo.png"><a href="modules/documentation-and-reporting.html">Documentation & Reporting</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/163/logo.png"><a href="modules/attacking-enterprise-networks.html">Attacking Enterprise Networks</a></div>
-
-  </div>
-</div>
-
-
-<div id="bug-bounty-hunter-path">
-  <div class="section-banner"><h2>🐞 Bug Bounty</h2></div>
-  <div class="grid">
-
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/35/logo.png"><a href="modules/web-requests.html">Web Requests</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/75/logo.png"><a href="modules/introduction-to-web-application.html">Introduction to Web Application</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/110/logo.png"><a href="modules/using-web-proxies.html">Using Web Proxies</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/144/logo.png"><a href="modules/information-gathering-web-edition.html">Information Gathering — Web Edition</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/54/logo.png"><a href="modules/attacking-web-applications-with-ffuf.html">Attacking Web Applications with FFUF</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/41/logo.png"><a href="modules/javascript-deobfuscation.html">JavaScript Deobfuscation</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/103/logo.png"><a href="modules/cross-site-scripting-xss.html">Cross-Site Scripting (XSS)</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/33/logo.png"><a href="modules/sql-injection-fundamentals.html">SQL Injection Fundamentals</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/58/logo.png"><a href="modules/sqlmap-essentials.html">SQLMap Essentials</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/109/logo.png"><a href="modules/command-injections.html">Command Injections</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/136/logo.png"><a href="modules/file-upload-attacks.html">File Upload Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/145/logo.png"><a href="modules/server-side-attacks.html">Server-side Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/57/logo.png"><a href="modules/login-brute-forcing.html">Login Brute Forcing</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/80/logo.png"><a href="modules/broken-authentication.html">Broken Authentication</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/134/logo.png"><a href="modules/web-attacks.html">Web Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/23/logo.png"><a href="modules/file-inclusion.html">File Inclusion</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/153/logo.png"><a href="modules/session-security.html">Session Security</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/160/logo.png"><a href="modules/web-service-and-api-attacks.html">Web Service & API Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/17/logo.png"><a href="modules/hacking-wordpress.html">Hacking WordPress</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/268/logo.png"><a href="modules/api-attacks.html">API Attacks</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/271/logo.png"><a href="modules/attacking-graphql.html">Attacking Graphql</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/161/logo.png"><a href="modules/bug-bounty-hunting-process.html">Bug Bounty Hunting Process</a></div>
-
-  </div>
-</div>
-
-
-<div id="defensive-security-analyst-path">
-  <div class="section-banner"><h2>🛡️ Defensive Security</h2></div>
-  <div class="grid">
-
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/148/logo.png"><a href="modules/incident-handling-process.html">Incident Handling Process</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/211/logo.png"><a href="modules/security-monitoring-and-siem-fundamentals.html">Security Monitoring & SIEM Fundamentals</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/216/logo.png"><a href="modules/windows-event-logs-and-finding-evil.html">Windows Event Logs & Finding Evil</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/214/logo.png"><a href="modules/introduction-to-threat-hunting-and-hunting-with-elastic.html">Threat Hunting & Hunting with Elastic</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/218/logo.png"><a href="modules/understanding-log-sources-and-investigating-with-splunk.html">Investigating with Splunk</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/233/logo.png"><a href="modules/windows-attacks-and-defense.html">Windows Attacks & Defense</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/81/logo.png"><a href="modules/intro-to-network-traffic-analysis.html">Intro to Network Traffic Analysis</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/229/logo.png"><a href="modules/intermediate-network-traffic-analysis.html">Intermediate Network Traffic Analysis</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/226/logo.png"><a href="modules/working-with-ids-ips.html">Working with IDS/IPS</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/227/logo.png"><a href="modules/introduction-to-malware-analysis.html">Introduction to Malware Analysis</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/41/logo.png"><a href="modules/javascript-deobfuscation.html">JavaScript Deobfuscation</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/234/logo.png"><a href="modules/yara-and-sigma-for-soc-analysts.html">YARA & Sigma for SOC Analysts</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/237/logo.png"><a href="modules/introduction-to-digital-forensics.html">Introduction to Digital Forensics</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/233/logo.png"><a href="modules/detecting-windows-attacks-with-splunk.html">Detecting Windows Attacks with Splunk</a></div>
-    <div class="module-card"><img src="https://academy.hackthebox.com/storage/modules/238/logo.png"><a href="modules/security-incident-reporting.html">Security Incident Reporting</a></div>
-
-  </div>
-</div>
-
-
-
-
-<div id="fundamental-of-ai">
-  <div class="section-banner"><h2>🧠 Fundamentals of AI</h2></div>
-  <div class="grid">
-
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/290/logo.png" alt="">
-      <a href="modules/fundamentals-of-ai.html">Fundamentals of AI</a>
+        <div class="pagination-container">
+            <button class="pagination-btn" id="prev-page">Previous</button>
+            <span id="page-info"></span>
+            <button class="pagination-btn" id="next-page">Next</button>
+        </div>
     </div>
 
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/292/logo.png" alt="">
-      <a href="modules/applications-of-ai-in-infosec.html">Applications of AI in InfoSec</a>
+    <footer>
+        <p>made with <i class="fas fa-heart"></i> by sanha</p>
+    </footer>
+
+    <div id="module-templates" style="display: none;">
+        <a href="modules/setting-up.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/87/logo.png" alt="Setting Up Your Environment"><p>Setting Up Your Environment</p></div></a>
+        <a href="modules/introduction-to-python-3.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/88/logo.png" alt="Introduction to Python 3"><p>Introduction to Python 3</p></div></a>
+        <a href="modules/introduction-to-c.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/228/logo.png?t=1708011830" alt="Introduction to C#"><p>Introduction to C#</p></div></a>
+        <a href="modules/network-foundations.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/289/logo.png" alt="Network Foundations"><p>Network Foundations</p></div></a>
+        <a href="modules/web-fuzzing.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/280/logo.png" alt="Web Fuzzing"><p>Web Fuzzing</p></div></a>
+        <a href="modules/intro-to-assembly-language.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/85/logo.png" alt="Introduction to Assembly"><p>Introduction to Assembly</p></div></a>
+        <a href="modules/linux-fundamentals.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/18/logo.png" alt="Linux Fundamentals"><p>Linux Fundamentals</p></div></a>
+        <a href="modules/macos-fundamentals.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/157/logo.png" alt="macOS Fundamentals"><p>macOS Fundamentals</p></div></a>
+        <a href="modules/introduction-to-windows-command-line.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/49/logo.png" alt="Windows Command Line"><p>Windows Command Line</p></div></a>
+        <a href="modules/introduction-to-bash-scripting.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/21/logo.png" alt="Introduction to Bash Scripting"><p>Introduction to Bash Scripting</p></div></a>
+        <a href="modules/introduction-to-active-directory.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/74/logo.png" alt="Introduction to Active Directory"><p>Introduction to Active Directory</p></div></a>
+        <a href="modules/dns-enumeration-using-python.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/27/logo.png" alt="DNS Enumeration (Python)"><p>DNS Enumeration (Python)</p></div></a>
+        <a href="modules/brief-intro-to-hardware-attacks.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/230/logo.png" alt="Intro to Hardware Attacks"><p>Intro to Hardware Attacks</p></div></a>
+        <a href="modules/stack-based-buffer-overflows-on-windows-x86.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/89/logo.png" alt="Windows Stack Buffer Overflows"><p>Windows Stack Buffer Overflows</p></div></a>
+        <a href="modules/android-fundamentals.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/195/logo.png" alt="Android Fundamentals"><p>Android Fundamentals</p></div></a>
+        <a href="modules/intro-to-academys-purple-modules.html" class="card-link"><div class="module-card glass" data-category="fundamentals"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/257/logo.png" alt="Intro to Academy's Purple Modules"><p>Intro to Academy's Purple Modules</p></div></a>
+        <a href="modules/network-enumeration-with-nmap.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/19/logo.png" alt="Network Enumeration with Nmap"><p>Network Enumeration with Nmap</p></div></a>
+        <a href="modules/footprinting.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/112/logo.png" alt="Footprinting"><p>Footprinting</p></div></a>
+        <a href="modules/information-gathering-web-edition.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/144/logo.png" alt="Information Gathering — Web Edition"><p>Information Gathering — Web Edition</p></div></a>
+        <a href="modules/vulnerability-assessment.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/108/logo.png" alt="Vulnerability Assessment"><p>Vulnerability Assessment</p></div></a>
+        <a href="modules/file-transfers.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/24/logo.png" alt="File Transfers"><p>File Transfers</p></div></a>
+        <a href="modules/shells-and-payloads.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/115/logo.png" alt="Shells & Payloads"><p>Shells & Payloads</p></div></a>
+        <a href="modules/using-the-metasploit-framework.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/39/logo.png" alt="Using the Metasploit Framework"><p>Using the Metasploit Framework</p></div></a>
+        <a href="modules/password-attacks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/147/logo.png" alt="Password Attacks"><p>Password Attacks</p></div></a>
+        <a href="modules/attacking-common-services.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/113/logo.png" alt="Attacking Common Services"><p>Attacking Common Services</p></div></a>
+        <a href="modules/pivoting-tunneling-and-port-forwarding.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/158/logo.png" alt="Pivoting, Tunneling, and Port Forwarding"><p>Pivoting, Tunneling, and Port Forwarding</p></div></a>
+        <a href="modules/active-directory-enumeration-and-attacks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/143/logo.png" alt="Active Directory Enumeration & Attacks"><p>Active Directory Enumeration & Attacks</p></div></a>
+        <a href="modules/using-web-proxies.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/110/logo.png" alt="Using Web Proxies"><p>Using Web Proxies</p></div></a>
+        <a href="modules/attacking-web-applications-with-ffuf.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/54/logo.png" alt="Attacking Web Applications with FFUF"><p>Attacking Web Applications with FFUF</p></div></a>
+        <a href="modules/login-brute-forcing.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/57/logo.png" alt="Login Brute Forcing"><p>Login Brute Forcing</p></div></a>
+        <a href="modules/sql-injection-fundamentals.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/33/logo.png" alt="SQL Injection Fundamentals"><p>SQL Injection Fundamentals</p></div></a>
+        <a href="modules/sqlmap-essentials.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/58/logo.png" alt="SQLMap Essentials"><p>SQLMap Essentials</p></div></a>
+        <a href="modules/cross-site-scripting-xss.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/103/logo.png" alt="Cross-Site Scripting (XSS)"><p>Cross-Site Scripting (XSS)</p></div></a>
+        <a href="modules/file-inclusion.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/23/logo.png" alt="File Inclusion"><p>File Inclusion</p></div></a>
+        <a href="modules/file-upload-attacks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/136/logo.png" alt="File Upload Attacks"><p>File Upload Attacks</p></div></a>
+        <a href="modules/command-injections.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/109/logo.png" alt="Command Injections"><p>Command Injections</p></div></a>
+        <a href="modules/web-attacks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/134/logo.png" alt="Web Attacks"><p>Web Attacks</p></div></a>
+        <a href="modules/attacking-common-applications.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/113/logo.png?t=1746253351" alt="Attacking Common Applications"><p>Attacking Common Applications</p></div></a>
+        <a href="modules/wi-fi-penetration-testing-basics.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/222/logo.png" alt="Wi-Fi Penetration Testing Basics"><p>Wi-Fi Penetration Testing Basics</p></div></a>
+        <a href="modules/attacking-wi-fi-protected-setup-wps.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/186/logo.png" alt="Attacking Wi-Fi Protected Setup (WPS)"><p>Attacking Wi-Fi Protected Setup (WPS)</p></div></a>
+        <a href="modules/wired-equivalent-privacy-wep-attacks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/185/logo.png" alt="Wired Equivalent Privacy (WEP) Attacks"><p>Wired Equivalent Privacy (WEP) Attacks</p></div></a>
+        <a href="modules/linux-privilege-escalation.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/51/logo.png" alt="Linux Privilege Escalation"><p>Linux Privilege Escalation</p></div></a>
+        <a href="modules/windows-privilege-escalation.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/67/logo.png" alt="Windows Privilege Escalation"><p>Windows Privilege Escalation</p></div></a>
+        <a href="modules/documentation-and-reporting.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/162/logo.png" alt="Documentation & Reporting"><p>Documentation & Reporting</p></div></a>
+        <a href="modules/attacking-enterprise-networks.html" class="card-link"><div class="module-card glass" data-category="pentesting"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/163/logo.png" alt="Attacking Enterprise Networks"><p>Attacking Enterprise Networks</p></div></a>
+        <a href="modules/web-requests.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/35/logo.png" alt="Web Requests"><p>Web Requests</p></div></a>
+        <a href="modules/introduction-to-web-application.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/75/logo.png" alt="Introduction to Web Application"><p>Introduction to Web Application</p></div></a>
+        <a href="modules/using-web-proxies.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/110/logo.png" alt="Using Web Proxies"><p>Using Web Proxies</p></div></a>
+        <a href="modules/information-gathering-web-edition.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/144/logo.png" alt="Information Gathering — Web Edition"><p>Information Gathering — Web Edition</p></div></a>
+        <a href="modules/attacking-web-applications-with-ffuf.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/54/logo.png" alt="Attacking Web Applications with FFUF"><p>Attacking Web Applications with FFUF</p></div></a>
+        <a href="modules/javascript-deobfuscation.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/41/logo.png" alt="JavaScript Deobfuscation"><p>JavaScript Deobfuscation</p></div></a>
+        <a href="modules/cross-site-scripting-xss.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/103/logo.png" alt="Cross-Site Scripting (XSS)"><p>Cross-Site Scripting (XSS)</p></div></a>
+        <a href="modules/sql-injection-fundamentals.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/33/logo.png" alt="SQL Injection Fundamentals"><p>SQL Injection Fundamentals</p></div></a>
+        <a href="modules/sqlmap-essentials.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/58/logo.png" alt="SQLMap Essentials"><p>SQLMap Essentials</p></div></a>
+        <a href="modules/command-injections.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/109/logo.png" alt="Command Injections"><p>Command Injections</p></div></a>
+        <a href="modules/file-upload-attacks.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/136/logo.png" alt="File Upload Attacks"><p>File Upload Attacks</p></div></a>
+        <a href="modules/server-side-attacks.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/145/logo.png" alt="Server-side Attacks"><p>Server-side Attacks</p></div></a>
+        <a href="modules/login-brute-forcing.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/57/logo.png" alt="Login Brute Forcing"><p>Login Brute Forcing</p></div></a>
+        <a href="modules/broken-authentication.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/80/logo.png" alt="Broken Authentication"><p>Broken Authentication</p></div></a>
+        <a href="modules/web-attacks.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/134/logo.png" alt="Web Attacks"><p>Web Attacks</p></div></a>
+        <a href="modules/file-inclusion.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/23/logo.png" alt="File Inclusion"><p>File Inclusion</p></div></a>
+        <a href="modules/session-security.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/153/logo.png" alt="Session Security"><p>Session Security</p></div></a>
+        <a href="modules/web-service-and-api-attacks.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/160/logo.png" alt="Web Service & API Attacks"><p>Web Service & API Attacks</p></div></a>
+        <a href="modules/hacking-wordpress.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/17/logo.png" alt="Hacking WordPress"><p>Hacking WordPress</p></div></a>
+        <a href="modules/api-attacks.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/268/logo.png" alt="API Attacks"><p>API Attacks</p></div></a>
+        <a href="modules/attacking-graphql.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/271/logo.png" alt="Attacking Graphql"><p>Attacking Graphql</p></div></a>
+        <a href="modules/bug-bounty-hunting-process.html" class="card-link"><div class="module-card glass" data-category="bugbounty"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/161/logo.png" alt="Bug Bounty Hunting Process"><p>Bug Bounty Hunting Process</p></div></a>
+        <a href="modules/incident-handling-process.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/148/logo.png" alt="Incident Handling Process"><p>Incident Handling Process</p></div></a>
+        <a href="modules/security-monitoring-and-siem-fundamentals.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/211/logo.png" alt="Security Monitoring & SIEM Fundamentals"><p>Security Monitoring & SIEM Fundamentals</p></div></a>
+        <a href="modules/windows-event-logs-and-finding-evil.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/216/logo.png" alt="Windows Event Logs & Finding Evil"><p>Windows Event Logs & Finding Evil</p></div></a>
+        <a href="modules/introduction-to-threat-hunting-and-hunting-with-elastic.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/214/logo.png" alt="Threat Hunting & Hunting with Elastic"><p>Threat Hunting & Hunting with Elastic</p></div></a>
+        <a href="modules/understanding-log-sources-and-investigating-with-splunk.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/218/logo.png" alt="Investigating with Splunk"><p>Investigating with Splunk</p></div></a>
+        <a href="modules/windows-attacks-and-defense.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/233/logo.png" alt="Windows Attacks & Defense"><p>Windows Attacks & Defense</p></div></a>
+        <a href="modules/intro-to-network-traffic-analysis.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/81/logo.png" alt="Intro to Network Traffic Analysis"><p>Intro to Network Traffic Analysis</p></div></a>
+        <a href="modules/intermediate-network-traffic-analysis.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/229/logo.png" alt="Intermediate Network Traffic Analysis"><p>Intermediate Network Traffic Analysis</p></div></a>
+        <a href="modules/working-with-ids-ips.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/226/logo.png" alt="Working with IDS/IPS"><p>Working with IDS/IPS</p></div></a>
+        <a href="modules/introduction-to-malware-analysis.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/227/logo.png" alt="Introduction to Malware Analysis"><p>Introduction to Malware Analysis</p></div></a>
+        <a href="modules/javascript-deobfuscation.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/41/logo.png" alt="JavaScript Deobfuscation"><p>JavaScript Deobfuscation</p></div></a>
+        <a href="modules/yara-and-sigma-for-soc-analysts.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/234/logo.png" alt="YARA & Sigma for SOC Analysts"><p>YARA & Sigma for SOC Analysts</p></div></a>
+        <a href="modules/introduction-to-digital-forensics.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/237/logo.png" alt="Introduction to Digital Forensics"><p>Introduction to Digital Forensics</p></div></a>
+        <a href="modules/detecting-windows-attacks-with-splunk.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/233/logo.png" alt="Detecting Windows Attacks with Splunk"><p>Detecting Windows Attacks with Splunk</p></div></a>
+        <a href="modules/security-incident-reporting.html" class="card-link"><div class="module-card glass" data-category="defensive"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/238/logo.png" alt="Security Incident Reporting"><p>Security Incident Reporting</p></div></a>
+        <a href="modules/fundamentals-of-ai.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/290/logo.png" alt="Fundamentals of AI"><p>Fundamentals of AI</p></div></a>
+        <a href="modules/applications-of-ai-in-infosec.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/292/logo.png" alt="Applications of AI in InfoSec"><p>Applications of AI in InfoSec</p></div></a>
+        <a href="modules/introduction-to-red-teaming-ai.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/294/logo.png" alt="Introduction to Red Teaming AI"><p>Introduction to Red Teaming AI</p></div></a>
+        <a href="modules/prompt-injection-attacks.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/297/logo.png" alt="Prompt Injection Attacks"><p>Prompt Injection Attacks</p></div></a>
+        <a href="modules/llm-output-attacks.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/307/logo.png" alt="LLM Output Attacks"><p>LLM Output Attacks</p></div></a>
+        <a href="modules/ai-data-attacks.html" class="card-link"><div class="module-card glass" data-category="ai"><i class="fas fa-arrow-up-right-from-square card-icon"></i><img loading="lazy" src="https://academy.hackthebox.com/storage/modules/302/logo.png" alt="AI Data Attacks"><p>AI Data Attacks</p></div></a>
     </div>
 
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/294/logo.png" alt="">
-      <a href="modules/introduction-to-red-teaming-ai.html">Introduction to Red Teaming AI</a>
-    </div>
 
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/297/logo.png" alt="">
-      <a href="modules/prompt-injection-attacks.html">Prompt Injection Attacks</a>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Matrix Background Animation ---
+            const canvas = document.getElementById('matrix-bg');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = window.innerWidth;
+                let height = canvas.height = window.innerHeight;
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>{}[]|?';
+                const fontSize = 10;
+                let particles = [];
+                class Particle{ constructor(){ this.x=Math.random()*width; this.y=Math.random()*height; this.char=characters[Math.floor(Math.random()*characters.length)]; this.life=0; this.maxLife=Math.random()*100+50; this.opacity=0 } draw(){ const fadeInDuration=20; const fadeOutStart=this.maxLife-20; if(this.life<fadeInDuration){this.opacity=this.life/fadeInDuration}else if(this.life>fadeOutStart){this.opacity=(this.maxLife-this.life)/(this.maxLife-fadeOutStart)}else{this.opacity=1} ctx.fillStyle=`rgba(198, 244, 50, ${this.opacity*0.5})`; ctx.font=`${fontSize}px Inter`; ctx.fillText(this.char,this.x,this.y); this.life++; if(this.life>=this.maxLife){const index=particles.indexOf(this); if(index>-1){particles.splice(index,1)}} } }
+                function animateParticles(){ ctx.clearRect(0,0,width,height); if(particles.length<75){particles.push(new Particle())} particles.forEach(p=>p.draw()); requestAnimationFrame(animateParticles) }
+                animateParticles();
+                window.addEventListener('resize', ()=>{ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; particles=[] });
+            }
 
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/307/logo.png" alt="">
-      <a href="modules/llm-output-attacks.html">LLM Output Attacks</a>
-    </div>
+            // --- Filtering and Pagination Logic ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+            const pageInfo = document.getElementById('page-info');
+            const grid = document.querySelector('.grid');
+            const moduleTemplates = document.getElementById('module-templates');
+            const allModuleCards = Array.from(moduleTemplates.querySelectorAll('.card-link'));
+            
+            let currentPage = 1;
+            const itemsPerPage = 12;
 
-    <div class="module-card">
-      <img src="https://academy.hackthebox.com/storage/modules/302/logo.png" alt="">
-      <a href="modules/ai-data-attacks.html">AI Data Attacks</a>
-    </div>
+            function displayModules() {
+                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+                
+                const filteredCards = allModuleCards.filter(cardLink => {
+                    const card = cardLink.querySelector('.module-card');
+                    return activeCategory === 'all' || card.dataset.category === activeCategory;
+                });
 
-  </div>
-</div>
+                const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+                
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const paginatedCards = filteredCards.slice(startIndex, endIndex);
 
+                // Clear grid and append new cards to trigger animation
+                grid.innerHTML = '';
+                paginatedCards.forEach(cardLink => {
+                    grid.appendChild(cardLink.cloneNode(true));
+                });
+                
+                // Update pagination UI
+                pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+                prevPageBtn.disabled = currentPage === 1;
+                nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+            }
 
-  </div>
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentPage = 1;
+                    displayModules();
+                });
+            });
+
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayModules();
+                }
+            });
+
+            nextPageBtn.addEventListener('click', () => {
+                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+                const filteredCards = allModuleCards.filter(cardLink => {
+                    const card = cardLink.querySelector('.module-card');
+                    return activeCategory === 'all' || card.dataset.category === activeCategory;
+                });
+                const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayModules();
+                }
+            });
+
+            // Initial display on page load
+            displayModules();
+        });
+    </script>
 </body>
 </html>
